@@ -1,0 +1,85 @@
+/* === BOOTSTRAP CLASSES === */
+
+.icon-fa {
+  width: 20px !important;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table-hover tbody tr {
+  transition: background-color 0.5s;
+}
+
+
+/* === CUSTOM CLASSES === */
+
+.custom-body-background {
+  background-color: #23153c;
+}
+
+.custom-container-background {
+  background-color: #ffffff;
+}
+
+.custom-img-sm {
+  border-radius: .25rem;
+  height: 20px;
+  width: auto;
+}
+
+.custom-info-div {
+  align-items: center;
+  display: flex;
+  height: 210px;
+}
+
+.custom-main-title {
+  margin-bottom:30px;
+  margin-top:30px;
+}
+
+.custom-margin-10 {
+  margin: 10px;
+}
+
+.custom-margin-icon {
+  margin-left: 24px;
+}
+
+.custom-photo {
+  height: 200px;
+  width: auto;
+}
+
+.custom-table-title {
+  color: #4d16bd;
+  font-size: 1.8rem;
+}
+
+.custom-enterprise-color-hover {
+  color: #4d16bd;
+  transition: color 0.5s;
+}
+
+tr:hover .custom-enterprise-color-hover {
+  color: #ff3f81;
+}
+
+.custom-technology-color-hover {
+  color: #404040;
+  transition: color 0.5s;
+}
+
+tr:hover .custom-technology-color-hover {
+  color: #4d16bd;
+}
+
+/* === VANTAJS === */
+
+#vantaJs {
+  position: sticky;
+  top: 0;
+  z-index: -100;
+}
