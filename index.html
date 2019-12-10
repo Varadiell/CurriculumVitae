@@ -29,14 +29,14 @@
           </div>
 
           <div class="custom-margin-10">
-            <img class="rounded float-right img-thumbnail custom-photo" alt="" src="images/photo_200.png">
+            <img class="rounded float-sm-right mx-auto d-block img-thumbnail custom-photo" alt="" src="images/photo_200.png">
           </div>
 
           <div class="custom-margin-10 custom-info-div">
             <div>
               <div>
                 <i class="fas fa-user-circle icon-fa"></i> <span>William SIMON--VEZO</span><br/>
-                <span class="custom-margin-icon">26 ans, permis B</span>
+                <span class="custom-margin-icon"><span id="luxonAge"></span> ans, permis B</span>
               </div>
               <!--
               <div>
@@ -286,7 +286,7 @@
 
           <hr class="bs-docs-separator">
 
-          <p class="text-center">&copy; William SIMON--VEZO 🐸, 2019.</p>
+          <p class="text-center">&copy; William SIMON--VEZO 🐸, <span id="luxonYear"></span>.</p>
 
         </div>
       </div>
@@ -298,6 +298,9 @@
 
     <!-- jQuery -->
     <script defer src="jquery/jquery-3.3.1.slim.min.js"></script>
+    <!-- Luxon -->
+    <script defer src="luxon/luxon.min.js"></script>
+    <script defer src="luxon/script.js"></script>
     <!-- Popper -->
     <script defer src="popper/popper.min.js"></script>
     <!-- Bootstrap -->
