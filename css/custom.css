@@ -23,6 +23,11 @@
   background-color: #ffffff;
 }
 
+.custom-enterprise-color-hover {
+  color: #4d16bd;
+  transition: color 0.5s;
+}
+
 .custom-img-sm {
   border-radius: .25rem;
   height: 20px;
@@ -36,6 +41,9 @@
 }
 
 .custom-main-title {
+  background: linear-gradient(to right, #4d16bd 8%, #ff3f81 98%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom:30px;
   margin-top:30px;
 }
@@ -58,12 +66,25 @@
   font-size: 1.8rem;
 }
 
-.custom-enterprise-color-hover {
+.custom-text-margin {
+  margin-left: 7px;
+  margin-right: 3px;
+}
+
+.ib-div {
+  display: inline-block;
+}
+
+tr:hover .custom-enterprise-color-hover {
+  color: #ff3f81;
+}
+
+.custom-location-color-hover {
   color: #4d16bd;
   transition: color 0.5s;
 }
 
-tr:hover .custom-enterprise-color-hover {
+tr:hover .custom-location-color-hover {
   color: #ff3f81;
 }
 
