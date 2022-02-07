@@ -42,11 +42,12 @@
 
 .custom-gradient-title {
   background: linear-gradient(to right, #4d16bd 8%, #ff3f81 98%);
+  background-clip: text;
+  margin-bottom:30px;
+  margin-top:30px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-print-color-adjust: exact;
-  margin-bottom:30px;
-  margin-top:30px;
 }
 
 .custom-margin-10 {
