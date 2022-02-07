@@ -40,10 +40,11 @@
   height: 210px;
 }
 
-.custom-main-title {
+.custom-gradient-title {
   background: linear-gradient(to right, #4d16bd 8%, #ff3f81 98%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-print-color-adjust: exact;
   margin-bottom:30px;
   margin-top:30px;
 }
