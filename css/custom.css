@@ -63,6 +63,15 @@
   width: auto;
 }
 
+.custom-situation-color-hover {
+  color: #4d16bd;
+  transition: color 0.5s;
+}
+
+tr:hover .custom-situation-color-hover {
+  color: #ff3f81;
+}
+
 .custom-table-title {
   color: #4d16bd;
   font-size: 1.8rem;
