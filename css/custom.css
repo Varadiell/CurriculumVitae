@@ -23,9 +23,8 @@
   background-color: #ffffff;
 }
 
-.custom-enterprise-color-hover {
-  color: #4d16bd;
-  transition: color 0.5s;
+.custom-date-text {
+  font-weight: normal;
 }
 
 .custom-img-sm {
@@ -63,15 +62,6 @@
   width: auto;
 }
 
-.custom-situation-color-hover {
-  color: #4d16bd;
-  transition: color 0.5s;
-}
-
-tr:hover .custom-situation-color-hover {
-  color: #ff3f81;
-}
-
 .custom-table-title {
   color: #4d16bd;
   font-size: 1.8rem;
@@ -82,20 +72,12 @@ tr:hover .custom-situation-color-hover {
   margin-right: 3px;
 }
 
-.ib-div {
-  display: inline-block;
-}
-
-tr:hover .custom-enterprise-color-hover {
-  color: #ff3f81;
-}
-
-.custom-location-color-hover {
+.custom-purple-hover {
   color: #4d16bd;
   transition: color 0.5s;
 }
 
-tr:hover .custom-location-color-hover {
+tr:hover .custom-purple-hover {
   color: #ff3f81;
 }
 
@@ -106,6 +88,10 @@ tr:hover .custom-location-color-hover {
 
 tr:hover .custom-technology-color-hover {
   color: #4d16bd;
+}
+
+.ib-div {
+  display: inline-block;
 }
 
 /* === VANTAJS === */
