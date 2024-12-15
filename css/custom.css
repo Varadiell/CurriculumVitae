@@ -30,6 +30,7 @@
 .custom-img-sm {
   border-radius: .25rem;
   height: 20px;
+  vertical-align: text-bottom;
   width: auto;
 }
 
