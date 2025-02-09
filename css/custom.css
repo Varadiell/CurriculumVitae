@@ -99,6 +99,15 @@ tr:hover .custom-technology-color-hover {
   display: inline-block;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-end {
+  align-self: flex-end;
+}
+
 /* === VANTAJS === */
 
 #vantaJs {
