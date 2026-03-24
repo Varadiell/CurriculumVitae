@@ -117,6 +117,10 @@ tr:hover .custom-technology-color-hover {
   align-self: flex-end;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 /* === VANTAJS === */
 
 #vantaJs {
