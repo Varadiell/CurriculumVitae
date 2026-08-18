@@ -1119,7 +1119,7 @@ body.lang-swap .page { opacity: .35; }
   .edu { gap: 0; }
   .edu__item {
     grid-template-columns: 20px 124px 1fr;
-    align-items: baseline;
+    align-items: center;
     gap: 8px;
     padding: 1pt 0;
     border-top: 0;
@@ -1136,7 +1136,7 @@ body.lang-swap .page { opacity: .35; }
   .edu__icon .icon { width: .95em; height: .95em; }
   /* the <=900px rule pins .edu__what to column 2; A4 is narrower than that */
   .edu__what { grid-column: auto; gap: 0 9px; }
-  .edu__when { align-self: baseline; font-size: 8.2pt; }
+  .edu__when { align-self: center; font-size: 8.2pt; }
   .edu__degree { font-size: 9.1pt; }
   .edu__meta { font-size: 8.1pt; }
   .edu__meta .tag { font-size: 8.1pt; }
