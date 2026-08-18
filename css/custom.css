@@ -572,14 +572,21 @@ mark.hit.is-active {
 
 .skills {
   columns: 3;
-  column-gap: 34px;
+  column-gap: 12px;
+  margin: -10px -12px 0;
 }
 .skills__group {
   break-inside: avoid;
-  padding-bottom: 22px;
+  margin-bottom: 4px;
+  padding: 10px 12px 12px;
+  border-radius: var(--radius-md);
+  transition: background-color .4s var(--ease);
 }
+.skills__group:hover { background: var(--row-hover); }
+.skills__group:hover .skills__label { color: var(--accent); }
 .skills__label {
   margin-bottom: 12px;
+  transition: color .35s var(--ease);
   font-size: .74rem;
   font-weight: 700;
   letter-spacing: .14em;
@@ -743,7 +750,6 @@ mark.hit.is-active {
   border-radius: var(--radius-md);
   transition: background-color .4s var(--ease);
 }
-.edu__item + .edu__item { border-top: 1px solid var(--border); }
 .edu__item:hover { background: var(--row-hover); }
 
 .edu__icon {
@@ -812,8 +818,19 @@ mark.hit.is-active {
   gap: 26px;
 }
 
-.defs { display: flex; flex-direction: column; gap: 20px; }
+.defs { display: flex; flex-direction: column; gap: 6px; margin: -10px -12px 0; }
+
+.def {
+  padding: 10px 12px 12px;
+  border-radius: var(--radius-md);
+  transition: background-color .4s var(--ease);
+}
+.def:hover { background: var(--row-hover); }
+.def:hover dt { color: var(--accent-2); }
+.def:hover dt::after { background: linear-gradient(90deg, var(--accent-2), transparent); }
+
 .defs dt {
+  transition: color .35s var(--ease);
   display: flex;
   align-items: center;
   gap: 9px;
@@ -829,6 +846,7 @@ mark.hit.is-active {
   flex: 1;
   height: 1px;
   background: linear-gradient(90deg, var(--border-strong), transparent);
+  transition: background .35s var(--ease);
 }
 .defs dd { color: var(--text-soft); }
 
@@ -1027,12 +1045,15 @@ body.lang-swap .page { opacity: .35; }
   }
 
   /* ---- skills: labelled row + icon pills ---- */
-  .skills { columns: 1; }
+  .skills { columns: 1; margin: 0; }
   .skills__group {
     display: grid;
     grid-template-columns: 150px 1fr;
     gap: 10px;
+    margin: 0;
     padding: 0 0 5px;
+    border-radius: 0;
+    background: none;
     break-inside: avoid;
   }
   .skills__label {
@@ -1116,7 +1137,8 @@ body.lang-swap .page { opacity: .35; }
 
   /* ---- closing pair ---- */
   .duo { grid-template-columns: 1fr 1fr; gap: 24px; break-inside: avoid; }
-  .defs { gap: 11px; }
+  .defs { gap: 0; margin: 0; }
+  .def { padding: 0 0 9px; background: none; }
   .defs dt {
     margin-bottom: 4px;
     font-size: 8pt;
