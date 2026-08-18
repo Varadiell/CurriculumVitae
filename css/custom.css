@@ -125,20 +125,21 @@ img { max-width: 100%; }
   vertical-align: -.18em;
 }
 
+/* The ramp is anchored to the viewport, not to the text box: a short
+   heading picks up only the slice of gradient sitting under it, instead of
+   racing through the whole violet-to-pink range in four words. */
 .gradient-text {
   background: var(--gradient);
-  background-size: 200% 100%;
+  background-size: 100vw 100%;
+  background-attachment: fixed;
+  background-position: 0 0;
+  background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: hue 12s linear infinite alternate;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
-}
-
-@keyframes hue {
-  to { background-position: 100% 0; }
 }
 
 /* ============ 3. Backdrop ============ */
@@ -1030,6 +1031,16 @@ body.lang-swap .page { opacity: .35; }
   .btn .icon { width: .95em; height: .95em; color: var(--accent); }
 
   /* ---- section headings keep the brand gradient ---- */
+  .gradient-text {
+    background-attachment: scroll;
+    background-size: 100% 100%;
+  }
+  .section-title .gradient-text {
+    background: none;
+    -webkit-text-fill-color: var(--accent);
+    color: var(--accent);
+  }
+
   .section-title {
     gap: 8px;
     margin: 0 0 8px;
