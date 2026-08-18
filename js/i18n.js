@@ -100,8 +100,12 @@ window.I18N = {
     'fun.sports': 'Sports',
     'fun.shooting': 'Sport shooting',
     'fun.racket': 'Racket sports',
-    'hint.lang': 'language',
-    'hint.theme': 'theme'
+    'search.placeholder': 'Search a technology, a mission…',
+    'search.label': 'Search the resume',
+    'search.prev': 'Previous match',
+    'search.next': 'Next match',
+    'search.clear': 'Clear search',
+    'search.none': 'no match'
   },
 
   fr: {
@@ -199,7 +203,11 @@ window.I18N = {
     'fun.sports': 'Sports',
     'fun.shooting': 'Tir sportif',
     'fun.racket': 'Sports de raquette',
-    'hint.lang': 'langue',
-    'hint.theme': 'thème'
+    'search.placeholder': 'Rechercher une techno, une mission…',
+    'search.label': 'Rechercher dans le CV',
+    'search.prev': 'Occurrence précédente',
+    'search.next': 'Occurrence suivante',
+    'search.clear': 'Effacer la recherche',
+    'search.none': 'aucun résultat'
   }
 };

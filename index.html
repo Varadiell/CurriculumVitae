@@ -87,8 +87,17 @@
         <g id="i-print" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
           <path d="M7 8.2V3.9h10v4.3"/><path d="M6.4 17.8H5a2 2 0 0 1-2-2v-4.1a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4.1a2 2 0 0 1-2 2h-1.4"/><rect x="6.4" y="14.2" width="11.2" height="5.9" rx="1.2"/>
         </g>
-        <g id="i-spark" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m12 3.4 1.9 5 5 1.9-5 1.9-1.9 5-1.9-5-5-1.9 5-1.9ZM18.6 3.2l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7Z"/>
+        <g id="i-search" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.6 15.6 4.2 4.2"/>
+        </g>
+        <g id="i-chev-up" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m7 14.2 5-5 5 5"/>
+        </g>
+        <g id="i-chev-down" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m7 9.8 5 5 5-5"/>
+        </g>
+        <g id="i-close" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m7.4 7.4 9.2 9.2M16.6 7.4l-9.2 9.2"/>
         </g>
         <g id="i-globe" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="9"/><path d="M3.2 9.6h17.6M3.2 14.4h17.6"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/>
@@ -110,25 +119,43 @@
 
     <div class="scroll-progress d-print-none" aria-hidden="true"><span></span></div>
 
-    <p class="hints d-print-none">
-      <svg class="icon" viewBox="0 0 24 24"><use href="#i-spark"/></svg>
-      <kbd>L</kbd><span data-i18n="hint.lang">language</span>
-      <span class="hints__sep" aria-hidden="true"></span>
-      <kbd>T</kbd><span data-i18n="hint.theme">theme</span>
-    </p>
+    <form class="searchbar d-print-none" role="search" id="searchBar" autocomplete="off">
+      <svg class="icon searchbar__glass" viewBox="0 0 24 24"><use href="#i-search"/></svg>
+      <input type="search" id="searchInput" class="searchbar__input"
+             data-i18n-attr="placeholder:search.placeholder;aria-label:search.label"
+             placeholder="Rechercher une techno, une mission…" aria-label="Rechercher dans le CV">
+      <span class="searchbar__count" id="searchCount" role="status" aria-live="polite"></span>
+      <span class="searchbar__nav">
+        <button type="button" class="searchbar__btn" id="searchPrev" data-i18n-attr="aria-label:search.prev;title:search.prev" title="Précédent">
+          <svg class="icon" viewBox="0 0 24 24"><use href="#i-chev-up"/></svg>
+        </button>
+        <button type="button" class="searchbar__btn" id="searchNext" data-i18n-attr="aria-label:search.next;title:search.next" title="Suivant">
+          <svg class="icon" viewBox="0 0 24 24"><use href="#i-chev-down"/></svg>
+        </button>
+        <button type="button" class="searchbar__btn" id="searchClear" data-i18n-attr="aria-label:search.clear;title:search.clear" title="Effacer">
+          <svg class="icon" viewBox="0 0 24 24"><use href="#i-close"/></svg>
+        </button>
+      </span>
+      <kbd class="searchbar__key">/</kbd>
+    </form>
 
     <!-- ============ Toolbar ============ -->
     <header class="toolbar d-print-none">
       <button type="button" class="lang-btn" id="langBtn" data-i18n-attr="aria-label:nav.langSwitch;title:nav.langSwitch" title="Changer de langue">
         <svg class="icon" viewBox="0 0 24 24"><use href="#i-globe"/></svg>
         <span id="langLabel">FR</span>
+        <kbd>L</kbd>
       </button>
       <button type="button" class="icon-btn" id="themeBtn" data-i18n-attr="aria-label:nav.theme;title:nav.theme" title="Switch theme">
-        <svg class="icon icon--sun" viewBox="0 0 24 24"><use href="#i-sun"/></svg>
-        <svg class="icon icon--moon" viewBox="0 0 24 24"><use href="#i-moon"/></svg>
+        <span class="icon-btn__swap">
+          <svg class="icon icon--sun" viewBox="0 0 24 24"><use href="#i-sun"/></svg>
+          <svg class="icon icon--moon" viewBox="0 0 24 24"><use href="#i-moon"/></svg>
+        </span>
+        <kbd>T</kbd>
       </button>
       <button type="button" class="icon-btn" id="printBtn" data-i18n-attr="aria-label:nav.print;title:nav.print" title="Print / Save as PDF">
         <svg class="icon" viewBox="0 0 24 24"><use href="#i-print"/></svg>
+        <kbd>P</kbd>
       </button>
     </header>
 
