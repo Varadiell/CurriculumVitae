@@ -16,6 +16,10 @@
     <!-- Restore theme + language before first paint -->
     <script>
       (function () {
+        // the browser would otherwise restore the previous scroll position
+        // on reload, and animate its way there
+        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+
         var theme, lang;
         try {
           theme = localStorage.getItem('cv-theme');

@@ -69,7 +69,6 @@ html[data-theme="light"] {
 *::after { box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -142,6 +141,22 @@ img { max-width: 100%; }
   -webkit-print-color-adjust: exact;
 }
 
+/* Colours live in custom properties, so a theme swap repaints every element
+   at once. This blanket transition is switched on for the duration of the
+   swap only — leaving it always on would fight the hover transitions. */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition:
+    background-color .45s var(--ease),
+    border-color .45s var(--ease),
+    color .45s var(--ease),
+    fill .45s var(--ease),
+    stroke .45s var(--ease),
+    box-shadow .45s var(--ease),
+    opacity .45s var(--ease) !important;
+}
+
 /* ============ 3. Backdrop ============ */
 
 .backdrop {
@@ -149,9 +164,8 @@ img { max-width: 100%; }
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background:
-    radial-gradient(120% 90% at 50% -20%, var(--bg-2) 0%, transparent 60%),
-    var(--bg);
+  background: var(--bg);
+  transition: background-color .45s var(--ease);
 }
 
 .aurora {
@@ -324,18 +338,60 @@ html[data-theme="light"] .icon--sun { opacity: 0; transform: rotate(-90deg) scal
 }
 .searchbar__input::placeholder { color: var(--text-mute); }
 .searchbar__input::-webkit-search-cancel-button { display: none; }
-.searchbar:focus-within .searchbar__input { width: 250px; }
+/* stays open while a query is live, even after focus moves away */
+.searchbar:focus-within .searchbar__input,
+.searchbar.has-query .searchbar__input { width: 250px; }
 
+/* Nothing here toggles `display`: the counter, the arrows and the "/" cap
+   collapse to zero width so the bar resizes in one continuous motion.
+   The negative margins cancel the flex gap while an item is collapsed.   */
 .searchbar__count {
+  width: 0;
+  margin-left: -8px;
+  overflow: hidden;
+  opacity: 0;
   font-size: .76rem;
   font-variant-numeric: tabular-nums;
   color: var(--text-mute);
   white-space: nowrap;
+  transition:
+    width .35s var(--ease),
+    margin-left .35s var(--ease),
+    opacity .25s var(--ease);
 }
+.searchbar.has-count .searchbar__count { margin-left: 0; opacity: 1; }
 
-.searchbar__nav { display: none; gap: 2px; }
-.searchbar.has-query .searchbar__nav { display: inline-flex; }
-.searchbar.has-query .searchbar__key { display: none; }
+.searchbar__nav {
+  display: inline-flex;
+  gap: 2px;
+  max-width: 0;
+  margin-left: -8px;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-width .35s var(--ease),
+    margin-left .35s var(--ease),
+    opacity .25s var(--ease);
+}
+.searchbar.has-query .searchbar__nav { max-width: 90px; margin-left: 0; opacity: 1; }
+
+.searchbar__key {
+  overflow: hidden;
+  transition:
+    max-width .35s var(--ease),
+    margin .35s var(--ease),
+    padding .35s var(--ease),
+    border-width .35s var(--ease),
+    opacity .25s var(--ease);
+}
+.searchbar.has-query .searchbar__key {
+  max-width: 0;
+  min-width: 0;
+  margin-left: -8px;
+  padding: 0;
+  border-width: 0;
+  opacity: 0;
+}
 
 .searchbar__btn {
   display: grid;
@@ -352,11 +408,12 @@ html[data-theme="light"] .icon--sun { opacity: 0; transform: rotate(-90deg) scal
   transition: color .25s var(--ease), background-color .25s var(--ease);
 }
 .searchbar__btn:hover { color: var(--text); background: var(--chip-bg); }
-.searchbar__key { margin-right: 4px; }
+.searchbar__key { max-width: 30px; margin-right: 4px; }
 
 @media (max-width: 1180px) {
   .searchbar__input { width: 150px; }
-  .searchbar:focus-within .searchbar__input { width: 180px; }
+  .searchbar:focus-within .searchbar__input,
+  .searchbar.has-query .searchbar__input { width: 180px; }
 }
 @media (max-width: 900px) {
   .searchbar { display: none; }
@@ -927,7 +984,6 @@ body.lang-swap .page { opacity: .35; }
 /* ============ 15. Motion & data preferences ============ */
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;
@@ -996,13 +1052,12 @@ body.lang-swap .page { opacity: .35; }
   a, a:not(.btn) { color: var(--text-soft); background: none; }
   .edu__meta a { color: var(--accent); }
 
-  /* ---- header, closed by a full-width gradient rule ---- */
+  /* ---- header ---- */
   .hero {
     grid-template-columns: 74px 1fr;
     gap: 16px;
     align-items: center;
-    padding: 0 0 10px;
-    border-bottom: .7pt solid var(--border);
+    padding: 0 0 4px;
     break-inside: avoid;
   }
   .hero__portrait { padding: 0; }

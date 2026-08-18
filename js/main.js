@@ -84,7 +84,17 @@
 
   /* ---------- Theme ---------- */
 
+  var themeSwapTimer = 0;
+
   function setTheme(theme) {
+    if (!reduced) {
+      root.classList.add('theme-switching');
+      window.clearTimeout(themeSwapTimer);
+      themeSwapTimer = window.setTimeout(function () {
+        root.classList.remove('theme-switching');
+      }, 500);
+    }
+
     root.dataset.theme = theme;
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) { meta.content = theme === 'dark' ? '#0b0517' : '#f4f1fb'; }
@@ -95,6 +105,18 @@
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
       setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  /* ---------- Hero arrow ---------- */
+
+  var scrollHint = document.querySelector('.scroll-hint');
+  if (scrollHint) {
+    scrollHint.addEventListener('click', function (event) {
+      var target = document.querySelector(scrollHint.getAttribute('href'));
+      if (!target) { return; }
+      event.preventDefault();
+      target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
     });
   }
 
@@ -192,10 +214,16 @@
     var frame = 0;
     var running = false;
     var rgb = tint();
+    var rgbTarget = rgb.slice();
     var maxDist = 148;
 
     function tint() {
-      return getComputedStyle(root).getPropertyValue('--net').trim() || '183, 155, 255';
+      var raw = getComputedStyle(root).getPropertyValue('--net').trim() || '183, 155, 255';
+      return raw.split(',').map(function (part) { return parseFloat(part) || 0; });
+    }
+
+    function stroke(alpha) {
+      return 'rgba(' + Math.round(rgb[0]) + ',' + Math.round(rgb[1]) + ',' + Math.round(rgb[2]) + ',' + alpha + ')';
     }
 
     function stop() {
@@ -237,6 +265,8 @@
       frame = requestAnimationFrame(draw);
       ctx.clearRect(0, 0, width, height);
 
+      for (var t = 0; t < 3; t++) { rgb[t] += (rgbTarget[t] - rgb[t]) * 0.08; }
+
       for (var i = 0; i < nodes.length; i++) {
         var node = nodes[i];
         node.x += node.vx;
@@ -259,7 +289,7 @@
           var dy = node.y - other.y;
           var dist = Math.hypot(dx, dy);
           if (dist > maxDist) { continue; }
-          ctx.strokeStyle = 'rgba(' + rgb + ',' + (0.22 * (1 - dist / maxDist)).toFixed(3) + ')';
+          ctx.strokeStyle = stroke((0.22 * (1 - dist / maxDist)).toFixed(3));
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(node.x, node.y);
@@ -267,7 +297,7 @@
           ctx.stroke();
         }
 
-        ctx.fillStyle = 'rgba(' + rgb + ',0.55)';
+        ctx.fillStyle = stroke(0.55);
         ctx.beginPath();
         ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
         ctx.fill();
@@ -275,7 +305,7 @@
     }
 
     function refreshTint() {
-      window.setTimeout(function () { rgb = tint(); }, 60);
+      window.setTimeout(function () { rgbTarget = tint(); }, 60);
     }
 
     window.addEventListener('pointermove', function (event) {
@@ -333,12 +363,18 @@
 
   function paintCount() {
     if (!searchBar || !searchCount) { return; }
-    var active = searchTerm.length >= 2;
+
+    var label = '';
+    if (searchTerm.length >= 2) {
+      label = hits.length ? (hitIndex + 1) + '/' + hits.length : dict('search.none');
+    }
+
     searchBar.classList.toggle('has-query', searchTerm.length > 0);
-    if (!active) { searchCount.textContent = ''; return; }
-    searchCount.textContent = hits.length
-      ? (hitIndex + 1) + '/' + hits.length
-      : dict('search.none');
+    searchCount.textContent = label;
+
+    // width animates only between two lengths, so measure the text we just set
+    searchCount.style.width = label ? searchCount.scrollWidth + 'px' : '0px';
+    searchBar.classList.toggle('has-count', !!label);
   }
 
   function focusHit(index, scroll) {
