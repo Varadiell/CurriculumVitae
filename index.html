@@ -1,486 +1,560 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
   <head>
-    <title>William SIMON--VEZO | Freelance Senior Full-Stack Dev. | Resume</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="meta.title">William SIMON--VEZO | Freelance Senior Full-Stack Dev. | Resume</title>
+    <meta name="description" data-i18n-attr="content:meta.description" content="Resume of William SIMON--VEZO, freelance senior full-stack developer based near Nantes, France.">
+    <meta name="author" content="William SIMON--VEZO">
+    <meta name="theme-color" content="#0d0618">
+    <meta name="color-scheme" content="dark light">
     <link rel="icon" type="image/x-icon" href="images/frog_ico_32.ico">
-    <!-- Bootstrap CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
+    <link rel="preload" as="image" href="images/photo_200.png">
     <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Restore theme + language before first paint -->
+    <script>
+      (function () {
+        var theme, lang;
+        try {
+          theme = localStorage.getItem('cv-theme');
+          lang = localStorage.getItem('cv-lang');
+        } catch (e) { /* private mode */ }
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        if (!lang) {
+          lang = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.lang = lang;
+      })();
+    </script>
   </head>
 
-  <body class="custom-body-background">
+  <body>
 
-    <div id="vantaJs" class="d-print-none"></div>
+    <!-- ============ SVG icon sprite ============ -->
+    <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="i-user" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.7" r="3.3"/><path d="M5.6 19.4a6.9 6.9 0 0 1 12.8 0"/>
+        </g>
+        <g id="i-briefcase" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2.8" y="7.2" width="18.4" height="13" rx="2.4"/><path d="M8.6 7.2V5.6a2 2 0 0 1 2-2h2.8a2 2 0 0 1 2 2v1.6M2.8 12.4h18.4M11 12.4h2"/>
+        </g>
+        <g id="i-home" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3.4 10.6 12 3.6l8.6 7v8.2a1.8 1.8 0 0 1-1.8 1.8H5.2a1.8 1.8 0 0 1-1.8-1.8Z"/><path d="M9.4 20.6v-6.2h5.2v6.2"/>
+        </g>
+        <g id="i-car" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 16.4v-3.1l1.9-4.6A2 2 0 0 1 6.8 7.4h10.4a2 2 0 0 1 1.9 1.3l1.9 4.6v3.1a1.4 1.4 0 0 1-1.4 1.4H4.4A1.4 1.4 0 0 1 3 16.4Z"/><path d="M3.6 13.3h16.8M6.4 20.4v-1.6M17.6 20.4v-1.6"/><circle cx="7.4" cy="15.9" r=".9" fill="currentColor" stroke="none"/><circle cx="16.6" cy="15.9" r=".9" fill="currentColor" stroke="none"/>
+        </g>
+        <g id="i-at" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3.6"/><path d="M15.6 8.4v4.8a2.7 2.7 0 0 0 5.4 0V12a9 9 0 1 0-3.6 7.2"/>
+        </g>
+        <path id="i-linkedin" fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.94v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/>
+        <path id="i-github" fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+        <g id="i-code" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m8.6 8.4-4 3.6 4 3.6M15.4 8.4l4 3.6-4 3.6M13.4 5.6l-2.8 12.8"/>
+        </g>
+        <g id="i-users" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9.2" cy="8.4" r="3.4"/><path d="M2.9 19.6a6.4 6.4 0 0 1 12.6 0"/><path d="M16.4 5.4a3.4 3.4 0 0 1 0 6.4M17.4 14.2a6.4 6.4 0 0 1 3.7 5.4"/>
+        </g>
+        <g id="i-cap" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2.6 9.4 12 5.1l9.4 4.3-9.4 4.3Z"/><path d="M6.6 11.3v4.6c0 1.6 2.4 2.9 5.4 2.9s5.4-1.3 5.4-2.9v-4.6M21.4 9.6v5"/>
+        </g>
+        <g id="i-heart" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20.2c-.6-.4-8.2-4.9-8.2-10a4.6 4.6 0 0 1 8.2-2.8 4.6 4.6 0 0 1 8.2 2.8c0 5.1-7.6 9.6-8.2 10Z"/>
+        </g>
+        <g id="i-sun" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"/>
+        </g>
+        <g id="i-moon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.4 14.2A8.8 8.8 0 0 1 9.8 3.6a8.8 8.8 0 1 0 10.6 10.6Z"/>
+        </g>
+        <g id="i-print" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 8.2V3.9h10v4.3"/><path d="M6.4 17.8H5a2 2 0 0 1-2-2v-4.1a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4.1a2 2 0 0 1-2 2h-1.4"/><rect x="6.4" y="14.2" width="11.2" height="5.9" rx="1.2"/>
+        </g>
+        <g id="i-spark" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 3.4 1.9 5 5 1.9-5 1.9-1.9 5-1.9-5-5-1.9 5-1.9ZM18.6 3.2l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7Z"/>
+        </g>
+        <g id="i-globe" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><path d="M3.2 9.6h17.6M3.2 14.4h17.6"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/>
+        </g>
+        <g id="i-arrow" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 4.6v14.2M6.4 13.2 12 18.8l5.6-5.6"/>
+        </g>
+      </defs>
+    </svg>
 
-    <!-- Main Container -->
-    <div class="containerC spacefirst custom-container-background">
-
-      <!-- Start of CV -->
-      <div class="row justify-content-md-center">
-        <div class="span10">
-
-          <div class="custom-gradient-title custom-margin-top-50">
-            <h1 class="text-center">FREELANCE SENIOR FULL-STACK DEVELOPER</h1>
-          </div>
-
-          <div class="custom-margin-10">
-            <img class="rounded float-sm-right mx-auto d-block img-thumbnail custom-photo" alt="" src="images/photo_200.png">
-          </div>
-
-          <div class="custom-margin-10 custom-info-div">
-            <div>
-              <div>
-                <i class="fas fa-user-circle icon-fa"></i> <span>William SIMON--VEZO</span>, <span id="luxonAge"></span> years old
-              </div>
-              <div>
-                <i class="fas fa-briefcase icon-fa"></i> <span id="luxonExperience"></span> years of experience</span>
-              </div>
-              <div>
-                <i class="fas fa-home icon-fa"></i> Vallet, France</span>
-              </div>
-              <div>
-                <i class="fas fa-car icon-fa"></i> Driving Licence B</span>
-              </div>
-              <!--
-              <div>
-                <i class="fas fa-map-marker-alt icon-fa"></i> 1 allée du Lorem Ipsum<br/>
-                <span class="custom-margin-icon">11111 Lorem-City</span>
-              </div>
-              <div>
-                <i class="fas fa-phone icon-fa"></i> 06.00.00.00.00
-              </div>
-              -->
-              <div>
-                <i class="fab fa-linkedin-in icon-fa"></i> <a target="_blank" href="https://www.linkedin.com/in/williamsimonvezo/">linkedin.com/in/williamsimonvezo</a>
-              </div>
-              <div>
-                <i class="fas fa-at icon-fa"></i> <a href="mailto:contact@codeandsorcery.fr">contact@codeandsorcery.fr</a>
-              </div>
-              <div>
-                <i class="fab fa-github icon-fa"></i> <a target="_blank" href="https://github.com/Varadiell">github.com/Varadiell</a>
-              </div>
-            </div>
-          </div>
-
-
-
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th colspan="2" class="custom-table-title custom-gradient-title"><i class="fas fa-laptop-code"></i> Technical Skills</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Programming Languages
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">Typescript</span><img src="images/icons/typescript_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Javascript</span><img src="images/icons/javascript_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Solidity</span><img src="images/icons/solidity_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Java</span><img src="images/icons/java_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Python</span><img src="images/icons/python_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">PHP</span><img src="images/icons/php_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Frameworks
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">React</span><img src="images/icons/react_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">NextJS</span><img src="images/icons/nextjs_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">React Native</span><img src="images/icons/react_native_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Express</span><img src="images/icons/express_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">NestJS</span><img src="images/icons/nestjs_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Nuxt</span><img src="images/icons/nuxt_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Vue</span><img src="images/icons/vue_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  UI/UX
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">shadcn/ui</span><img src="images/icons/shadcn_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">RadixUI</span><img src="images/icons/radixui_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Bootstrap</span><img src="images/icons/bootstrap_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Figma</span><img src="images/icons/figma_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Databases
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">MongoDB</span><img src="images/icons/mongodb_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">MySQL</span><img src="images/icons/mysql_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">PostgreSQL</span><img src="images/icons/postgresql_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">SQLite3</span><img src="images/icons/sqlite3_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Testing
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">Chai</span><img src="images/icons/chai_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Vitest</span><img src="images/icons/vitest_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Playwright</span><img src="images/icons/playwright_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Hardhat</span><img src="images/icons/hardhat_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Foundry</span><img src="images/icons/foundry_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Cucumber</span><img src="images/icons/cucumber_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  CI/CD
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">Vercel</span><img src="images/icons/vercel_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Docker</span><img src="images/icons/docker_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">GitHub Actions</span><img src="images/icons/github_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">ESLint</span><img src="images/icons/eslint_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">CodeSpell</span><img src="images/icons/codespell_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  API
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">GraphQL</span><img src="images/icons/graphql_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">FastAPI</span><img src="images/icons/fastapi_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Insomnia</span><img src="images/icons/insomnia_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Postman</span><img src="images/icons/postman_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr>
-              <!-- <tr>
-                <th scope="row">
-                  Gestion de versions
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">GitHub</span><img src="images/icons/github_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Gerrit</span><img src="images/icons/gerrit_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">GitLab</span><img src="images/icons/gitlab_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr> -->
-              <!-- <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Code Editors
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">Visual Studio Code</span><img src="images/icons/visual_studio_code_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">WebStorm</span><img src="images/icons/webstorm_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Remix</span><img src="images/icons/remix_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr> -->
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Machine/Deep Learning
-                </th>
-                <td class="text-right">
-                  <div class="ib-div"><span class="custom-text-margin">TensorFlow</span><img src="images/icons/tensorflow_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Scikit-Learn</span><img src="images/icons/scikitlearn_128.png" class="custom-img-sm"/></div>
-                  <div class="ib-div"><span class="custom-text-margin">Jupyter Notebook</span><img src="images/icons/jupyter_128.png" class="custom-img-sm"/></div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-
-
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th colspan="2" class="custom-table-title custom-gradient-title"><i class="fas fa-briefcase"></i> Professional Experiences</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">
-                  <img src="images/icons/code_and_sorcery_128.png" class="custom-img-sm"/>
-                  <span class="custom-purple-hover">Code and Sorcery</span><br/>
-                  <span class="custom-technology-color-hover">Freelance</span><br/>
-                  <span class="custom-date-text">January 2025 - Present</span>
-                </th>
-                <td class="flex-column">
-                  <span>
-                    <img src="images/icons/meria_128.png" class="custom-img-sm" />
-                    <span class="custom-purple-hover bold" title="May 2025 - April 2026">Meria</span>: unannounced project related to cryptocurrencies, coming soon.
-                  </span>
-                  <span class="align-end">
-                    <img src="images/icons/react_128.png" class="custom-img-sm" title="React" />
-                    <img src="images/icons/nestjs_128.png" class="custom-img-sm" title="NestJS" />
-                    <img src="images/icons/mongodb_128.png" class="custom-img-sm" title="MongoDB" />
-                    <img src="images/icons/postgresql_128.png" class="custom-img-sm" title="PostgreSQL" />
-                    <img src="images/icons/typescript_128.png" class="custom-img-sm" title="Typescript" />
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <img src="images/icons/thefork_128.png" class="custom-img-sm"/>
-                  <span class="custom-purple-hover">TheFork</span><br/>
-                  <span class="custom-technology-color-hover">Permanent Contract</span><br/>
-                  <span class="custom-date-text">July 2022 - December 2024</span>
-                </th>
-                <td class="flex-column">
-                  <span>Web Reservation Widget & TheFork Manager 3 (Restaurant Management App)</span>
-                  <span>• Feature development: Design Kit, Home Page, I18N, Booking Flow, etc.</span>
-                  <span>• Code coverage, optimization, bug fixing</span>
-                  <span class="align-end">
-                    <img src="images/icons/chai_128.png" class="custom-img-sm" title="Chai" />
-                    <img src="images/icons/graphql_128.png" class="custom-img-sm" title="GraphQL" />
-                    <img src="images/icons/nextjs_128.png" class="custom-img-sm" title="NextJS" />
-                    <img src="images/icons/playwright_128.png" class="custom-img-sm" title="Playwright" />
-                    <img src="images/icons/react_128.png" class="custom-img-sm" title="React" />
-                    <img src="images/icons/typescript_128.png" class="custom-img-sm" title="Typescript" />
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <img src="images/icons/wiztivi_128.png" class="custom-img-sm"/>
-                  <span class="custom-purple-hover">Wiztivi</span><br/>
-                  <span class="custom-technology-color-hover">Permanent Contract</span><br/>
-                  <span class="custom-date-text">June 2018 - June 2022</span>
-                </th>
-                <td class="flex-column">
-                  <span>Vodafone Project: UI Development for Vodafone TV Box</span>
-                  <span>• Feature development: startup sequence, maintenance, recordings, Wi-Fi multicast</span>
-                  <span>• Maintenance and refactoring of legacy code</span>
-                  <br/>
-                  <span>Altice Project: UI Development for SFR Box 8</span>
-                  <span>• Feature development: TV guide, purchase process, Bluetooth, parental control, zapping banner</span>
-                  <span>• Development of automated tests programmable by testers using pseudo-code</span>
-                  <span>• Contribution to the internal framework development</span>
-                  <span class="align-end">
-                    <img src="images/icons/chai_128.png" class="custom-img-sm" title="Chai" />
-                    <img src="images/icons/cucumber_128.png" class="custom-img-sm" title="Cucumber" />
-                    <img src="images/icons/javascript_128.png" class="custom-img-sm" title="Javascript" />
-                    <img src="images/icons/nodejs_128.png" class="custom-img-sm" title="NodeJS" />
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <img src="images/icons/project_128.png" class="custom-img-sm"/>
-                  <span class="custom-purple-hover">Personal Project</span><br/>
-                  <span class="custom-technology-color-hover">Entrepreneurship</span><br/>
-                  <span class="custom-date-text">March 2016 - June 2018</span>
-                </th>
-                <td class="flex-column">
-                  <span>Development of a Sports Social Network for Tournament Management</span>
-                  <span class="align-end">
-                    <img src="images/icons/angular_128.png" class="custom-img-sm" title="Angular" />
-                    <img src="images/icons/electron_128.png" class="custom-img-sm" title="Electron" />
-                    <img src="images/icons/express_128.png" class="custom-img-sm" title="Express" />
-                    <img src="images/icons/mongodb_128.png" class="custom-img-sm" title="MongoDB" />
-                    <img src="images/icons/nodejs_128.png" class="custom-img-sm" title="NodeJS" />
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <img src="images/icons/algo_data_128.png" class="custom-img-sm"/>
-                  <span class="custom-purple-hover">Algo Data</span><br/>
-                  <span class="custom-technology-color-hover">Fixed-Term Contract</span><br/>
-                  <span class="custom-date-text">November 2015 - March 2016</span><br/>
-                  <span class="custom-technology-color-hover">Apprenticeship</span><br/>
-                  <span class="custom-date-text">November 2014 - November 2015</span>
-                </th>
-                <td class="flex-column">
-                  <span>Additional Missions</span>
-                  <br/>
-                  <span>Web Development</span>
-                  <span>• Website hosting, email marketing, ticketing, event management</span>
-                  <span>• IT support during congresses in Paris - JESFC, EuroPCR</span>
-                  <span class="align-end">
-                    <img src="images/icons/bootstrap_128.png" class="custom-img-sm" title="Bootstrap" />
-                    <img src="images/icons/java_128.png" class="custom-img-sm" title="Java" />
-                    <img src="images/icons/postgresql_128.png" class="custom-img-sm" title="PostgreSQL" />
-                    <img src="images/icons/webobjects_128.png" class="custom-img-sm" title="WebObjects" />
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <img src="images/icons/chu_nantes_128.png" class="custom-img-sm"/>
-                  <span class="custom-purple-hover">Nantes University Hospital (DSIT)</span><br/>
-                  <span class="custom-technology-color-hover">Internship</span><br/>
-                  <span class="custom-date-text">2014</span>
-                </th>
-                <td class="flex-column">
-                  <span>Development of the new IT equipment database for Nantes University Hospital</span>
-                  <span class="align-end">
-                    <img src="images/icons/javascript_128.png" class="custom-img-sm" title="Javascript" />
-                    <img src="images/icons/mysql_128.png" class="custom-img-sm" title="MySQL" />
-                    <img src="images/icons/php_128.png" class="custom-img-sm" title="PHP" />
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-
-
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th colspan="2" class="custom-table-title custom-gradient-title"><i class="fas fa-user-tie"></i> General Skills</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Secondary Skills
-                </th>
-                <td class="text-right">
-                  Agile development, teamwork, communication, peer review, leadership
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Soft Skills
-                </th>
-                <td class="text-right">Autonomous, rigorous, sociable</td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Languages
-                </th>
-                <td class="text-right">
-                  Native French, C1 English (advanced), B1 Spanish (intermediate)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Additional Knowledge
-                </th>
-                <td class="text-right">
-                  • Experience as a deputy in a company's Social and Economic Committee<br/>
-                  • First aid certification
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-
-
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th colspan="2" class="custom-table-title custom-gradient-title"><i class="fas fa-graduation-cap"></i> Education</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  September - December 2024
-                </th>
-                <td class="text-right">
-                  AI Development: Coding, Training, Visualization<br/>
-                  <a target="_blank" href="https://certificate.alyra.fr/check/3680320C7503BA9829EC131698B758CD44E2D8BD59092F9994841C8771BF8425aFVWRllPUm9NVGFFWlUyemZzUkd5bUd0RDEwR0ZzWjFDbmhYOWVmeTM5MHVxUW1p">Distinction</a> - <a target="_blank" href="https://www.alyra.fr/formations/developpeur-intelligence-artificielle">Alyra</a> Certified Training - <a target="_blank" href="https://www.francecompetences.fr/recherche/rncp/38616/">RNCP38616</a> - <span class="custom-purple-hover">Remote</span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  April - June 2024
-                </th>
-                <td class="text-right">
-                  Blockchain Decentralized Applications: Design, Security, Deployment<br/>
-                  <a target="_blank" href="https://certificate.bcdiploma.com/check/92228E2A7B84A23E40A1FD3F6EFF9C30E4544EF5A7C3D50CD38B859DBE92BAB8aEgyeGhrZDJvWDJwUEVaLzdUY2ljdG1ia20yQ1hYM0lySDhqYm5Ram9SMnpjVDFM">Diploma</a> - <a target="_blank" href="https://www.alyra.fr/formations/decouvrir-la-formation-developpeur-blockchain-alyra">Alyra</a> Certified Training - <a target="_blank" href="https://www.francecompetences.fr/recherche/rs/6515/">RS6515</a> - <span class="custom-purple-hover">Remote</span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  2014 - 2015
-                </th>
-                <td class="text-right">Professional Bachelor's Degree in Software & IT Systems (Apprenticeship) - <span class="custom-purple-hover">Nantes</span></td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  2012 - 2014
-                </th>
-                <td class="text-right">University Diploma in Computer Science (DUT) - <span class="custom-purple-hover">Nantes</span></td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  2011 - 2012
-                </th>
-                <td class="text-right">Generalist Engineering School (EIGSI) - <span class="custom-purple-hover">La Rochelle</span></td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  2011
-                </th>
-                <td class="text-right">Scientific Baccalaureate, Engineering Sciences Specialization - <span class="custom-purple-hover">Nantes</span></td>
-              </tr>
-            </tbody>
-          </table>
-
-
-
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th colspan="2" class="custom-table-title custom-gradient-title"><i class="fas fa-heart"></i> Interests</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Hobbies
-                </th>
-                <td class="text-right">
-                  Outdoor drone flying, 3D printing<br/>
-                  Video games, board games, game design
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="custom-purple-hover">
-                  Sports
-                </th>
-                <td class="text-right">Sport shooting, racket sports</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <hr class="bs-docs-separator">
-
-          <p class="text-center d-print-none">&copy; William SIMON--VEZO 🐸, <span id="luxonYear"></span>.</p>
-
-        </div>
-      </div>
-      <!-- End of CV -->
-
-
-
+    <!-- ============ Background ============ -->
+    <div class="backdrop d-print-none" aria-hidden="true">
+      <div class="aurora aurora--1"></div>
+      <div class="aurora aurora--2"></div>
+      <div class="aurora aurora--3"></div>
+      <div class="grid-veil"></div>
+      <canvas id="constellation"></canvas>
     </div>
 
-    <!-- jQuery -->
-    <script defer src="jquery/jquery-3.7.1.slim.min.js"></script>
-    <!-- Luxon -->
-    <script defer src="luxon/luxon.min.js"></script>
-    <script defer src="luxon/script.js"></script>
-    <!-- Popper -->
-    <script defer src="popper/popper.min.js"></script>
-    <!-- Bootstrap -->
-    <script defer src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- Font-Awesome -->
-    <script defer src="fontawesome/js/all.min.js"></script>
-    <!-- VantaJS -->
-    <script defer src="vantaJs/three.r92.min.js"></script>
-    <script defer src="vantaJs/vanta.net.min.js"></script>
-    <script defer src="vantaJs/custom.js"></script>
+    <div class="scroll-progress d-print-none" aria-hidden="true"><span></span></div>
+
+    <p class="hints d-print-none">
+      <svg class="icon" viewBox="0 0 24 24"><use href="#i-spark"/></svg>
+      <span data-i18n="hint.keys">Shortcuts: L switches language, T switches theme.</span>
+    </p>
+
+    <!-- ============ Toolbar ============ -->
+    <header class="toolbar d-print-none">
+      <button type="button" class="lang-btn" id="langBtn" data-i18n-attr="aria-label:nav.langSwitch;title:nav.langSwitch" title="Passer en français">
+        <svg class="icon" viewBox="0 0 24 24"><use href="#i-globe"/></svg>
+        <span id="langLabel">FR</span>
+      </button>
+      <button type="button" class="icon-btn" id="themeBtn" data-i18n-attr="aria-label:nav.theme;title:nav.theme" title="Switch theme">
+        <svg class="icon icon--sun" viewBox="0 0 24 24"><use href="#i-sun"/></svg>
+        <svg class="icon icon--moon" viewBox="0 0 24 24"><use href="#i-moon"/></svg>
+      </button>
+      <button type="button" class="icon-btn" id="printBtn" data-i18n-attr="aria-label:nav.print;title:nav.print" title="Print / Save as PDF">
+        <svg class="icon" viewBox="0 0 24 24"><use href="#i-print"/></svg>
+      </button>
+    </header>
+
+    <main class="page">
+
+      <!-- ============ Hero ============ -->
+      <section class="hero card" data-reveal>
+        <div class="hero__portrait">
+          <img src="images/photo_200.png" width="150" height="200" alt="William SIMON--VEZO" class="hero__photo">
+          <span class="hero__ring" aria-hidden="true"></span>
+        </div>
+
+        <div class="hero__body">
+          <h1 class="hero__title">
+            <span class="hero__name">William SIMON--VEZO</span>
+            <span class="hero__role gradient-text" data-i18n="hero.role">Freelance Senior Full-Stack Developer</span>
+          </h1>
+          <p class="hero__tagline" data-i18n="hero.tagline">Web, mobile, blockchain and AI.</p>
+
+          <ul class="facts">
+            <li class="fact">
+              <svg class="icon" viewBox="0 0 24 24"><use href="#i-briefcase"/></svg>
+              <b class="counter" data-count-to="0" id="xpCount">0</b><span data-i18n="hero.years">years of experience</span>
+            </li>
+            <li class="fact">
+              <svg class="icon" viewBox="0 0 24 24"><use href="#i-user"/></svg>
+              <b class="counter" data-count-to="0" id="ageCount">0</b><span data-i18n="hero.age">years old</span>
+            </li>
+            <li class="fact">
+              <svg class="icon" viewBox="0 0 24 24"><use href="#i-home"/></svg>
+              <span data-i18n="hero.location">Vallet, France</span>
+            </li>
+            <li class="fact">
+              <svg class="icon" viewBox="0 0 24 24"><use href="#i-car"/></svg>
+              <span data-i18n="hero.licence">Driving licence B</span>
+            </li>
+          </ul>
+
+          <div class="cta">
+            <a class="btn btn--primary" href="mailto:contact@codeandsorcery.fr">
+              <svg class="icon" viewBox="0 0 24 24"><use href="#i-at"/></svg>
+              <span>contact@codeandsorcery.fr</span>
+            </a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.linkedin.com/in/williamsimonvezo/">
+              <svg class="icon" viewBox="0 0 24 24"><use href="#i-linkedin"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a class="btn" target="_blank" rel="noopener" href="https://github.com/Varadiell">
+              <svg class="icon" viewBox="0 0 16 16"><use href="#i-github"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <a class="scroll-hint d-print-none" href="#skills" data-i18n-attr="aria-label:hero.scroll" aria-label="Scroll to content">
+          <svg class="icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>
+        </a>
+      </section>
+
+      <!-- ============ Technical skills ============ -->
+      <section class="card" id="skills" data-reveal>
+        <h2 class="section-title">
+          <svg class="icon" viewBox="0 0 24 24"><use href="#i-code"/></svg>
+          <span class="gradient-text" data-i18n="skills.title">Technical Skills</span>
+        </h2>
+
+        <div class="skills">
+          <div class="skills__group">
+            <h3 class="skills__label" data-i18n="skills.languages">Programming Languages</h3>
+            <ul class="chips">
+              <li class="chip"><img src="images/icons/typescript_128.png" alt="" loading="lazy">TypeScript</li>
+              <li class="chip"><img src="images/icons/javascript_128.png" alt="" loading="lazy">JavaScript</li>
+              <li class="chip"><img src="images/icons/solidity_128.png" alt="" loading="lazy">Solidity</li>
+              <li class="chip"><img src="images/icons/java_128.png" alt="" loading="lazy">Java</li>
+              <li class="chip"><img src="images/icons/python_128.png" alt="" loading="lazy">Python</li>
+              <li class="chip"><img src="images/icons/php_128.png" alt="" loading="lazy">PHP</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__label" data-i18n="skills.frameworks">Frameworks</h3>
+            <ul class="chips">
+              <li class="chip"><img src="images/icons/react_128.png" alt="" loading="lazy">React</li>
+              <li class="chip"><img src="images/icons/nextjs_128.png" alt="" loading="lazy">Next.js</li>
+              <li class="chip"><img src="images/icons/react_native_128.png" alt="" loading="lazy">React Native</li>
+              <li class="chip"><img src="images/icons/express_128.png" alt="" loading="lazy">Express</li>
+              <li class="chip"><img src="images/icons/nestjs_128.png" alt="" loading="lazy">NestJS</li>
+              <li class="chip"><img src="images/icons/nuxt_128.png" alt="" loading="lazy">Nuxt</li>
+              <li class="chip"><img src="images/icons/vue_128.png" alt="" loading="lazy">Vue</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__label" data-i18n="skills.uiux">UI/UX</h3>
+            <ul class="chips">
+              <li class="chip"><img src="images/icons/shadcn_128.png" alt="" loading="lazy">shadcn/ui</li>
+              <li class="chip"><img src="images/icons/radixui_128.png" alt="" loading="lazy">Radix UI</li>
+              <li class="chip"><img src="images/icons/bootstrap_128.png" alt="" loading="lazy">Bootstrap</li>
+              <li class="chip"><img src="images/icons/figma_128.png" alt="" loading="lazy">Figma</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__label" data-i18n="skills.databases">Databases</h3>
+            <ul class="chips">
+              <li class="chip"><img src="images/icons/mongodb_128.png" alt="" loading="lazy">MongoDB</li>
+              <li class="chip"><img src="images/icons/mysql_128.png" alt="" loading="lazy">MySQL</li>
+              <li class="chip"><img src="images/icons/postgresql_128.png" alt="" loading="lazy">PostgreSQL</li>
+              <li class="chip"><img src="images/icons/sqlite3_128.png" alt="" loading="lazy">SQLite3</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__label" data-i18n="skills.testing">Testing</h3>
+            <ul class="chips">
+              <li class="chip"><img src="images/icons/chai_128.png" alt="" loading="lazy">Chai</li>
+              <li class="chip"><img src="images/icons/vitest_128.png" alt="" loading="lazy">Vitest</li>
+              <li class="chip"><img src="images/icons/playwright_128.png" alt="" loading="lazy">Playwright</li>
+              <li class="chip"><img src="images/icons/hardhat_128.png" alt="" loading="lazy">Hardhat</li>
+              <li class="chip"><img src="images/icons/foundry_128.png" alt="" loading="lazy">Foundry</li>
+              <li class="chip"><img src="images/icons/cucumber_128.png" alt="" loading="lazy">Cucumber</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__label" data-i18n="skills.cicd">CI/CD</h3>
+            <ul class="chips">
+              <li class="chip"><img src="images/icons/vercel_128.png" alt="" loading="lazy">Vercel</li>
+              <li class="chip"><img src="images/icons/docker_128.png" alt="" loading="lazy">Docker</li>
+              <li class="chip"><img src="images/icons/github_128.png" alt="" loading="lazy">GitHub Actions</li>
+              <li class="chip"><img src="images/icons/eslint_128.png" alt="" loading="lazy">ESLint</li>
+              <li class="chip"><img src="images/icons/codespell_128.png" alt="" loading="lazy">CodeSpell</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__label" data-i18n="skills.api">API</h3>
+            <ul class="chips">
+              <li class="chip"><img src="images/icons/graphql_128.png" alt="" loading="lazy">GraphQL</li>
+              <li class="chip"><img src="images/icons/fastapi_128.png" alt="" loading="lazy">FastAPI</li>
+              <li class="chip"><img src="images/icons/insomnia_128.png" alt="" loading="lazy">Insomnia</li>
+              <li class="chip"><img src="images/icons/postman_128.png" alt="" loading="lazy">Postman</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__label" data-i18n="skills.ml">Machine/Deep Learning</h3>
+            <ul class="chips">
+              <li class="chip"><img src="images/icons/tensorflow_128.png" alt="" loading="lazy">TensorFlow</li>
+              <li class="chip"><img src="images/icons/scikitlearn_128.png" alt="" loading="lazy">Scikit-Learn</li>
+              <li class="chip"><img src="images/icons/jupyter_128.png" alt="" loading="lazy">Jupyter Notebook</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Experience ============ -->
+      <section class="card" id="experience" data-reveal>
+        <h2 class="section-title">
+          <svg class="icon" viewBox="0 0 24 24"><use href="#i-briefcase"/></svg>
+          <span class="gradient-text" data-i18n="xp.title">Professional Experience</span>
+        </h2>
+
+        <ol class="timeline">
+
+          <li class="tl" data-reveal>
+            <div class="tl__aside">
+              <img class="tl__logo" src="images/icons/code_and_sorcery_128.png" alt="" loading="lazy">
+              <div>
+                <p class="tl__org">Code and Sorcery</p>
+                <p class="tl__contract" data-i18n="xp.cas.contract">Freelance</p>
+                <p class="tl__date" data-i18n="xp.cas.date">January 2025 - Present</p>
+              </div>
+            </div>
+            <div class="tl__main">
+              <p class="tl__lead"><b class="hl">Meria</b><span data-i18n="xp.cas.lead">: unannounced project related to cryptocurrencies, coming soon.</span></p>
+              <p class="tl__sub" data-i18n="xp.cas.period">May 2025 - April 2026</p>
+              <ul class="chips chips--tech">
+                <li class="chip chip--sm"><img src="images/icons/react_128.png" alt="" loading="lazy">React</li>
+                <li class="chip chip--sm"><img src="images/icons/nestjs_128.png" alt="" loading="lazy">NestJS</li>
+                <li class="chip chip--sm"><img src="images/icons/mongodb_128.png" alt="" loading="lazy">MongoDB</li>
+                <li class="chip chip--sm"><img src="images/icons/postgresql_128.png" alt="" loading="lazy">PostgreSQL</li>
+                <li class="chip chip--sm"><img src="images/icons/typescript_128.png" alt="" loading="lazy">TypeScript</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="tl" data-reveal>
+            <div class="tl__aside">
+              <img class="tl__logo" src="images/icons/thefork_128.png" alt="" loading="lazy">
+              <div>
+                <p class="tl__org">TheFork</p>
+                <p class="tl__contract" data-i18n="xp.fork.contract">Permanent contract</p>
+                <p class="tl__date" data-i18n="xp.fork.date">July 2022 - December 2024</p>
+              </div>
+            </div>
+            <div class="tl__main">
+              <p class="tl__lead" data-i18n="xp.fork.lead">Web Reservation Widget &amp; TheFork Manager 3 (restaurant management app)</p>
+              <ul class="bullets">
+                <li data-i18n="xp.fork.b1">Feature development: Design Kit, home page, I18N, booking flow, etc.</li>
+                <li data-i18n="xp.fork.b2">Code coverage, optimization, bug fixing</li>
+              </ul>
+              <ul class="chips chips--tech">
+                <li class="chip chip--sm"><img src="images/icons/typescript_128.png" alt="" loading="lazy">TypeScript</li>
+                <li class="chip chip--sm"><img src="images/icons/react_128.png" alt="" loading="lazy">React</li>
+                <li class="chip chip--sm"><img src="images/icons/nextjs_128.png" alt="" loading="lazy">Next.js</li>
+                <li class="chip chip--sm"><img src="images/icons/graphql_128.png" alt="" loading="lazy">GraphQL</li>
+                <li class="chip chip--sm"><img src="images/icons/playwright_128.png" alt="" loading="lazy">Playwright</li>
+                <li class="chip chip--sm"><img src="images/icons/chai_128.png" alt="" loading="lazy">Chai</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="tl" data-reveal>
+            <div class="tl__aside">
+              <img class="tl__logo" src="images/icons/wiztivi_128.png" alt="" loading="lazy">
+              <div>
+                <p class="tl__org">Wiztivi</p>
+                <p class="tl__contract" data-i18n="xp.wiz.contract">Permanent contract</p>
+                <p class="tl__date" data-i18n="xp.wiz.date">June 2018 - June 2022</p>
+              </div>
+            </div>
+            <div class="tl__main">
+              <p class="tl__lead" data-i18n="xp.wiz.lead1">Vodafone project: UI development for the Vodafone TV box</p>
+              <ul class="bullets">
+                <li data-i18n="xp.wiz.b1">Feature development: startup sequence, maintenance, recordings, Wi-Fi multicast</li>
+                <li data-i18n="xp.wiz.b2">Maintenance and refactoring of legacy code</li>
+              </ul>
+              <p class="tl__lead tl__lead--second" data-i18n="xp.wiz.lead2">Altice project: UI development for the SFR Box 8</p>
+              <ul class="bullets">
+                <li data-i18n="xp.wiz.b3">Feature development: TV guide, purchase process, Bluetooth, parental control, zapping banner</li>
+                <li data-i18n="xp.wiz.b4">Automated tests programmable by testers using pseudo-code</li>
+                <li data-i18n="xp.wiz.b5">Contribution to the internal framework development</li>
+              </ul>
+              <ul class="chips chips--tech">
+                <li class="chip chip--sm"><img src="images/icons/javascript_128.png" alt="" loading="lazy">JavaScript</li>
+                <li class="chip chip--sm"><img src="images/icons/nodejs_128.png" alt="" loading="lazy">Node.js</li>
+                <li class="chip chip--sm"><img src="images/icons/cucumber_128.png" alt="" loading="lazy">Cucumber</li>
+                <li class="chip chip--sm"><img src="images/icons/chai_128.png" alt="" loading="lazy">Chai</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="tl" data-reveal>
+            <div class="tl__aside">
+              <img class="tl__logo" src="images/icons/project_128.png" alt="" loading="lazy">
+              <div>
+                <p class="tl__org" data-i18n="xp.perso.org">Personal project</p>
+                <p class="tl__contract" data-i18n="xp.perso.contract">Entrepreneurship</p>
+                <p class="tl__date" data-i18n="xp.perso.date">March 2016 - June 2018</p>
+              </div>
+            </div>
+            <div class="tl__main">
+              <p class="tl__lead" data-i18n="xp.perso.lead">Sports social network for tournament management</p>
+              <ul class="chips chips--tech">
+                <li class="chip chip--sm"><img src="images/icons/angular_128.png" alt="" loading="lazy">Angular</li>
+                <li class="chip chip--sm"><img src="images/icons/electron_128.png" alt="" loading="lazy">Electron</li>
+                <li class="chip chip--sm"><img src="images/icons/express_128.png" alt="" loading="lazy">Express</li>
+                <li class="chip chip--sm"><img src="images/icons/mongodb_128.png" alt="" loading="lazy">MongoDB</li>
+                <li class="chip chip--sm"><img src="images/icons/nodejs_128.png" alt="" loading="lazy">Node.js</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="tl" data-reveal>
+            <div class="tl__aside">
+              <img class="tl__logo" src="images/icons/algo_data_128.png" alt="" loading="lazy">
+              <div>
+                <p class="tl__org">Algo Data</p>
+                <p class="tl__contract" data-i18n="xp.algo.contract1">Fixed-term contract</p>
+                <p class="tl__date" data-i18n="xp.algo.date1">November 2015 - March 2016</p>
+                <p class="tl__contract" data-i18n="xp.algo.contract2">Apprenticeship</p>
+                <p class="tl__date" data-i18n="xp.algo.date2">November 2014 - November 2015</p>
+              </div>
+            </div>
+            <div class="tl__main">
+              <p class="tl__lead" data-i18n="xp.algo.lead">Web development and additional missions</p>
+              <ul class="bullets">
+                <li data-i18n="xp.algo.b1">Website hosting, email marketing, ticketing, event management</li>
+                <li data-i18n="xp.algo.b2">IT support during congresses in Paris: JESFC, EuroPCR</li>
+              </ul>
+              <ul class="chips chips--tech">
+                <li class="chip chip--sm"><img src="images/icons/java_128.png" alt="" loading="lazy">Java</li>
+                <li class="chip chip--sm"><img src="images/icons/webobjects_128.png" alt="" loading="lazy">WebObjects</li>
+                <li class="chip chip--sm"><img src="images/icons/postgresql_128.png" alt="" loading="lazy">PostgreSQL</li>
+                <li class="chip chip--sm"><img src="images/icons/bootstrap_128.png" alt="" loading="lazy">Bootstrap</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="tl" data-reveal>
+            <div class="tl__aside">
+              <img class="tl__logo" src="images/icons/chu_nantes_128.png" alt="" loading="lazy">
+              <div>
+                <p class="tl__org" data-i18n="xp.chu.org">Nantes University Hospital (DSIT)</p>
+                <p class="tl__contract" data-i18n="xp.chu.contract">Internship</p>
+                <p class="tl__date">2014</p>
+              </div>
+            </div>
+            <div class="tl__main">
+              <p class="tl__lead" data-i18n="xp.chu.lead">New IT equipment database for Nantes University Hospital</p>
+              <ul class="chips chips--tech">
+                <li class="chip chip--sm"><img src="images/icons/php_128.png" alt="" loading="lazy">PHP</li>
+                <li class="chip chip--sm"><img src="images/icons/javascript_128.png" alt="" loading="lazy">JavaScript</li>
+                <li class="chip chip--sm"><img src="images/icons/mysql_128.png" alt="" loading="lazy">MySQL</li>
+              </ul>
+            </div>
+          </li>
+
+        </ol>
+      </section>
+
+      <!-- ============ Education ============ -->
+      <section class="card" id="education" data-reveal>
+        <h2 class="section-title">
+          <svg class="icon" viewBox="0 0 24 24"><use href="#i-cap"/></svg>
+          <span class="gradient-text" data-i18n="edu.title">Education</span>
+        </h2>
+
+        <ol class="edu">
+          <li class="edu__item">
+            <span class="edu__when" data-i18n="edu.ai.when">September - December 2024</span>
+            <p class="edu__what">
+              <span class="edu__degree" data-i18n="edu.ai.degree">AI Development: coding, training, visualization</span>
+              <span class="edu__meta">
+                <a target="_blank" rel="noopener" href="https://certificate.alyra.fr/check/3680320C7503BA9829EC131698B758CD44E2D8BD59092F9994841C8771BF8425aFVWRllPUm9NVGFFWlUyemZzUkd5bUd0RDEwR0ZzWjFDbmhYOWVmeTM5MHVxUW1p" data-i18n="edu.ai.honours">Distinction</a>
+                <span class="sep">·</span>
+                <a target="_blank" rel="noopener" href="https://www.alyra.fr/formations/developpeur-intelligence-artificielle"><span data-i18n="edu.certified">Certified training</span> Alyra</a>
+                <span class="sep">·</span>
+                <a target="_blank" rel="noopener" href="https://www.francecompetences.fr/recherche/rncp/38616/">RNCP38616</a>
+                <span class="tag" data-i18n="edu.remote">Remote</span>
+              </span>
+            </p>
+          </li>
+          <li class="edu__item">
+            <span class="edu__when" data-i18n="edu.bc.when">April - June 2024</span>
+            <p class="edu__what">
+              <span class="edu__degree" data-i18n="edu.bc.degree">Blockchain decentralized applications: design, security, deployment</span>
+              <span class="edu__meta">
+                <a target="_blank" rel="noopener" href="https://certificate.bcdiploma.com/check/92228E2A7B84A23E40A1FD3F6EFF9C30E4544EF5A7C3D50CD38B859DBE92BAB8aEgyeGhrZDJvWDJwUEVaLzdUY2ljdG1ia20yQ1hYM0lySDhqYm5Ram9SMnpjVDFM" data-i18n="edu.bc.diploma">Diploma</a>
+                <span class="sep">·</span>
+                <a target="_blank" rel="noopener" href="https://www.alyra.fr/formations/decouvrir-la-formation-developpeur-blockchain-alyra"><span data-i18n="edu.certified">Certified training</span> Alyra</a>
+                <span class="sep">·</span>
+                <a target="_blank" rel="noopener" href="https://www.francecompetences.fr/recherche/rs/6515/">RS6515</a>
+                <span class="tag" data-i18n="edu.remote">Remote</span>
+              </span>
+            </p>
+          </li>
+          <li class="edu__item">
+            <span class="edu__when">2014 - 2015</span>
+            <p class="edu__what">
+              <span class="edu__degree" data-i18n="edu.licence.degree">Professional bachelor's degree in Software &amp; IT Systems (apprenticeship)</span>
+              <span class="edu__meta"><span class="tag">Nantes</span></span>
+            </p>
+          </li>
+          <li class="edu__item">
+            <span class="edu__when">2012 - 2014</span>
+            <p class="edu__what">
+              <span class="edu__degree" data-i18n="edu.dut.degree">University diploma in Computer Science (DUT)</span>
+              <span class="edu__meta"><span class="tag">Nantes</span></span>
+            </p>
+          </li>
+          <li class="edu__item">
+            <span class="edu__when">2011 - 2012</span>
+            <p class="edu__what">
+              <span class="edu__degree" data-i18n="edu.eigsi.degree">Generalist engineering school (EIGSI)</span>
+              <span class="edu__meta"><span class="tag">La Rochelle</span></span>
+            </p>
+          </li>
+          <li class="edu__item">
+            <span class="edu__when">2011</span>
+            <p class="edu__what">
+              <span class="edu__degree" data-i18n="edu.bac.degree">Scientific baccalaureate, engineering sciences specialization</span>
+              <span class="edu__meta"><span class="tag">Nantes</span></span>
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ General skills + interests ============ -->
+      <div class="duo">
+
+        <section class="card" id="general" data-reveal>
+          <h2 class="section-title">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#i-users"/></svg>
+            <span class="gradient-text" data-i18n="gen.title">General Skills</span>
+          </h2>
+          <dl class="defs">
+            <dt data-i18n="gen.secondary">Secondary skills</dt>
+            <dd data-i18n="gen.secondaryV">Agile development, teamwork, communication, peer review, leadership</dd>
+            <dt data-i18n="gen.soft">Soft skills</dt>
+            <dd data-i18n="gen.softV">Autonomous, rigorous, sociable</dd>
+            <dt data-i18n="gen.langs">Languages</dt>
+            <dd data-i18n="gen.langsV">Native French, English C1 (advanced), Spanish B1 (intermediate)</dd>
+            <dt data-i18n="gen.extra">Additional knowledge</dt>
+            <dd>
+              <ul class="bullets">
+                <li data-i18n="gen.extra1">Deputy member of a company's Social and Economic Committee</li>
+                <li data-i18n="gen.extra2">First aid certification</li>
+              </ul>
+            </dd>
+          </dl>
+        </section>
+
+        <section class="card" id="interests" data-reveal>
+          <h2 class="section-title">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#i-heart"/></svg>
+            <span class="gradient-text" data-i18n="fun.title">Interests</span>
+          </h2>
+          <dl class="defs">
+            <dt data-i18n="fun.hobbies">Hobbies</dt>
+            <dd>
+              <ul class="pills">
+                <li data-i18n="fun.drone">Outdoor drone flying</li>
+                <li data-i18n="fun.print3d">3D printing</li>
+                <li data-i18n="fun.videogames">Video games</li>
+                <li data-i18n="fun.boardgames">Board games</li>
+                <li data-i18n="fun.gamedesign">Game design</li>
+              </ul>
+            </dd>
+            <dt data-i18n="fun.sports">Sports</dt>
+            <dd>
+              <ul class="pills">
+                <li data-i18n="fun.shooting">Sport shooting</li>
+                <li data-i18n="fun.racket">Racket sports</li>
+              </ul>
+            </dd>
+          </dl>
+        </section>
+
+      </div>
+
+      <footer class="footer">
+        <p>&copy; William SIMON--VEZO 🐸 · <span id="year">2026</span></p>
+      </footer>
+
+    </main>
+
+    <script defer src="js/i18n.js"></script>
+    <script defer src="js/main.js"></script>
   </body>
 </html>
