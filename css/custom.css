@@ -568,11 +568,15 @@ mark.hit.is-active {
 }
 .fact { display: inline-flex; align-items: center; gap: 8px; }
 .fact .icon { color: var(--accent); }
+
+/* number and label read as one phrase: same baseline, one space apart */
+.fact__value { display: inline-flex; align-items: baseline; gap: 5px; }
 .counter {
   font-variant-numeric: tabular-nums;
-  font-size: 1.15rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
   color: var(--text);
-  margin-right: 2px;
 }
 
 .cta {
@@ -1072,7 +1076,8 @@ body.lang-swap .page { opacity: .35; }
   .hero__role { font-size: 18pt; line-height: 1.06; }
   .facts { margin-top: 5px; gap: 1px 16px; font-size: 8.8pt; color: var(--text-soft); }
   .fact .icon { width: .95em; height: .95em; color: var(--accent); }
-  .counter { font-size: 9.2pt; }
+  .counter { font-size: 9.4pt; }
+  .fact__value { gap: 4px; }
   .cta { margin-top: 6px; gap: 5px; }
   .btn {
     padding: 2px 9px;
