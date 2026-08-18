@@ -9,7 +9,7 @@ window.I18N = {
     'meta.title': 'William SIMON--VEZO | Freelance Senior Full-Stack Dev. | Resume',
     'meta.description': 'Resume of William SIMON--VEZO, freelance senior full-stack developer based near Nantes, France.',
 
-    'nav.langSwitch': 'Switch to French',
+    'nav.langSwitch': 'Switch language',
     'nav.theme': 'Switch theme',
     'nav.print': 'Print / Save as PDF',
 
@@ -68,10 +68,10 @@ window.I18N = {
     'edu.title': 'Education',
     'edu.certified': 'Certified training',
     'edu.remote': 'Remote',
-    'edu.ai.when': 'September - December 2024',
+    'edu.ai.when': 'Sep. - Dec. 2024',
     'edu.ai.degree': 'AI Development: coding, training, visualization',
     'edu.ai.honours': 'Distinction',
-    'edu.bc.when': 'April - June 2024',
+    'edu.bc.when': 'Apr. - Jun. 2024',
     'edu.bc.degree': 'Blockchain decentralized applications: design, security, deployment',
     'edu.bc.diploma': 'Diploma',
     'edu.licence.degree': "Professional bachelor's degree in Software & IT Systems (apprenticeship)",
@@ -100,14 +100,15 @@ window.I18N = {
     'fun.sports': 'Sports',
     'fun.shooting': 'Sport shooting',
     'fun.racket': 'Racket sports',
-    'hint.keys': 'Shortcuts: L switches language, T switches theme.'
+    'hint.lang': 'language',
+    'hint.theme': 'theme'
   },
 
   fr: {
     'meta.title': 'William SIMON--VEZO | Développeur Full-Stack Senior Freelance | CV',
     'meta.description': 'CV de William SIMON--VEZO, développeur full-stack senior freelance, près de Nantes.',
 
-    'nav.langSwitch': 'Passer en anglais',
+    'nav.langSwitch': 'Changer de langue',
     'nav.theme': 'Changer de thème',
     'nav.print': 'Imprimer / Enregistrer en PDF',
 
@@ -166,7 +167,7 @@ window.I18N = {
     'edu.title': 'Formation',
     'edu.certified': 'Formation certifiante',
     'edu.remote': 'À distance',
-    'edu.ai.when': 'Septembre - Décembre 2024',
+    'edu.ai.when': 'Sept. - Déc. 2024',
     'edu.ai.degree': "Développeur en intelligence artificielle : code, entraînement, visualisation",
     'edu.ai.honours': 'Mention',
     'edu.bc.when': 'Avril - Juin 2024',
@@ -198,6 +199,7 @@ window.I18N = {
     'fun.sports': 'Sports',
     'fun.shooting': 'Tir sportif',
     'fun.racket': 'Sports de raquette',
-    'hint.keys': 'Raccourcis : touche L pour la langue, T pour le thème.'
+    'hint.lang': 'langue',
+    'hint.theme': 'thème'
   }
 };

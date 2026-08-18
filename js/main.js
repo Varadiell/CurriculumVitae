@@ -30,8 +30,8 @@
     });
 
     root.lang = lang;
-    // the button advertises the language it switches to
-    if (langLabel) { langLabel.textContent = lang === 'fr' ? 'EN' : 'FR'; }
+    // the button shows the language currently in use
+    if (langLabel) { langLabel.textContent = lang.toUpperCase(); }
   }
 
   function setLang(lang, animate) {
