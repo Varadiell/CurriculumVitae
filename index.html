@@ -25,7 +25,9 @@
           theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         }
         if (!lang) {
-          lang = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+          // browser preference decides, English is the fallback
+          var preferred = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+          lang = preferred.toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
         }
         document.documentElement.dataset.theme = theme;
         document.documentElement.lang = lang;
