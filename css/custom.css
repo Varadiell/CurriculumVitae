@@ -454,8 +454,7 @@ mark.hit {
   transition: background-color .25s var(--ease), box-shadow .25s var(--ease);
 }
 mark.hit.is-active {
-  background: var(--gradient);
-  color: #fff;
+  background: rgba(255, 63, 129, .45);
   box-shadow: 0 4px 14px -6px rgba(255, 63, 129, .9);
 }
 
