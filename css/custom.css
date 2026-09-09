@@ -822,6 +822,7 @@ mark.hit.is-active {
   align-items: start;
   gap: 12px;
 }
+.chips--tech + .tl__mission { margin-top: 20px; }
 .tl__lead { font-weight: 600; color: var(--text); }
 .tl__lead--second { margin-top: 16px; }
 .tl__lead .hl { color: var(--accent-2); }
@@ -1363,6 +1364,7 @@ body.lang-swap .page { opacity: .35; }
   .tl__date::before { content: " | "; }
   .tl__date + .tl__contract::before { content: " / "; }
   .tl__mission { gap: 6pt; }
+  .chips--tech + .tl__mission { margin-top: 6pt; }
   .tl__lead { font-size: 10pt; font-weight: 600; }
   .tl__lead--second { margin-top: 5pt; }
   .tl__lead .hl { color: inherit; }
