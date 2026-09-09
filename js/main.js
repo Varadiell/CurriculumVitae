@@ -367,10 +367,10 @@
      the rows that hold none; clicking a technology badge runs the same
      query so its twins light up across the whole resume.                  */
 
-  // Apply the same rule to every content block, keeping section headings as
-  // navigation landmarks. Children are checked only when their parent matches.
+  // Apply the same rule to every content block. Children are checked only
+  // when their parent matches; section headings reflect their whole section.
   var DIMMABLE = [
-    '.hero__title', '.hero__tagline', '.fact', '.cta .btn',
+    '.hero__portrait', '.hero__title', '.hero__tagline', '.fact', '.cta .btn',
     '.skills__group', '.chip', '.tl', '.edu__item',
     '.def', '.pills li', '.language-list li', '.footer'
   ].join(', ');
@@ -473,6 +473,13 @@
     for (var i = 0; i < rows.length; i++) {
       if (!rows[i].querySelector('mark.hit') && !rows[i].parentElement.closest('.is-dim')) {
         rows[i].classList.add('is-dim');
+      }
+    }
+
+    var headings = pageEl.querySelectorAll('.section-title');
+    for (var j = 0; j < headings.length; j++) {
+      if (!headings[j].closest('section').querySelector('mark.hit')) {
+        headings[j].classList.add('is-dim');
       }
     }
 
