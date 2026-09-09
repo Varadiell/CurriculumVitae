@@ -582,6 +582,7 @@ mark.hit.is-active {
   color: var(--text);
   font-size: .92rem;
   font-weight: 600;
+  box-shadow: none;
   transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
 }
 .btn:hover {
@@ -596,9 +597,12 @@ mark.hit.is-active {
   padding: 12px 19px;
   background: var(--gradient);
   color: #fff;
+}
+.btn--primary:hover {
+  color: #fff;
+  filter: saturate(1.12);
   box-shadow: 0 14px 34px -16px rgba(255, 63, 129, .9);
 }
-.btn--primary:hover { color: #fff; filter: saturate(1.12); }
 
 .scroll-hint {
   position: absolute;
