@@ -1023,9 +1023,9 @@ mark.hit.is-active {
   }
   .duo .pills li:first-child { padding-top: 0; }
   .duo .pills li:last-child { padding-bottom: 0; border-bottom: 0; }
-  .duo .pills li:hover { transform: none; box-shadow: none; color: var(--accent-2); }
-  .duo #general .def, .duo .pills li { position: relative; isolation: isolate; }
-  .duo #general .def::before, .duo .pills li::before {
+  .duo .pills li:hover { transform: none; box-shadow: none; color: inherit; }
+  .duo .def { position: relative; isolation: isolate; }
+  .duo .def::before {
     content: "";
     position: absolute;
     inset: 8px -12px;
@@ -1036,10 +1036,9 @@ mark.hit.is-active {
     pointer-events: none;
     transition: opacity .4s var(--ease);
   }
-  .duo .pills li::before { top: 5px; bottom: 5px; }
-  .duo #general .def:first-child::before, .duo .pills li:first-child::before { top: -5px; }
-  .duo #general .def:last-child::before, .duo .pills li:last-child::before { bottom: -5px; }
-  .duo #general .def:hover::before, .duo .pills li:hover::before { opacity: 1; }
+  .duo .def:first-child::before { top: -5px; }
+  .duo .def:last-child::before { bottom: -5px; }
+  .duo .def:hover::before { opacity: 1; }
 }
 
 @media screen and (max-width: 900px) {
