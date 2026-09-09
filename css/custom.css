@@ -328,7 +328,7 @@ html[data-theme="light"] .icon--sun { opacity: 0; transform: rotate(-90deg) scal
 .searchbar__glass { color: var(--accent); }
 
 .searchbar__input {
-  width: 216px;
+  width: 280px;
   border: 0;
   background: none;
   color: var(--text);
@@ -340,7 +340,7 @@ html[data-theme="light"] .icon--sun { opacity: 0; transform: rotate(-90deg) scal
 .searchbar__input::-webkit-search-cancel-button { display: none; }
 /* stays open while a query is live, even after focus moves away */
 .searchbar:focus-within .searchbar__input,
-.searchbar.has-query .searchbar__input { width: 250px; }
+.searchbar.has-query .searchbar__input { width: 310px; }
 
 /* Nothing here toggles `display`: the counter, the arrows and the "/" cap
    collapse to zero width so the bar resizes in one continuous motion.
@@ -410,11 +410,6 @@ html[data-theme="light"] .icon--sun { opacity: 0; transform: rotate(-90deg) scal
 .searchbar__btn:hover { color: var(--text); background: var(--chip-bg); }
 .searchbar__key { max-width: 30px; margin-right: 4px; }
 
-@media (max-width: 1180px) {
-  .searchbar__input { width: 150px; }
-  .searchbar:focus-within .searchbar__input,
-  .searchbar.has-query .searchbar__input { width: 180px; }
-}
 @media (max-width: 900px) {
   .searchbar { display: none; }
   .icon-btn kbd, .lang-btn kbd { display: none; }
