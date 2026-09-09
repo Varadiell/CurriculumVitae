@@ -711,23 +711,47 @@ mark.hit.is-active {
   position: relative;
   padding-left: 20px;
 }
-.tl__aside::before {
-  content: "";
-  position: absolute;
-  left: 4px; top: 16px;
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--gradient);
-  box-shadow: 0 0 0 4px var(--chip-bg);
+/* The rail follows the full experience item, including its missions on
+   mobile. Its gutter sits outside the rounded row hover background. */
+@media screen {
+  .timeline {
+    --timeline-gap: 8px;
+    --marker-top: 35px;
+    gap: var(--timeline-gap);
+    padding-left: 24px;
+  }
+  .tl { grid-template-columns: 226px 1fr; }
+  .tl__aside { padding-left: 0; }
+  .tl::before {
+    content: "";
+    position: absolute;
+    left: -15.5px;
+    top: calc(var(--marker-top) + 14px);
+    bottom: calc(4px - var(--timeline-gap) - var(--marker-top));
+    width: 1px;
+    background: var(--border-strong);
+    pointer-events: none;
+  }
+  .tl::after {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: var(--marker-top);
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    background: transparent;
+    pointer-events: none;
+    transition: background-color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .tl:last-child::before { display: none; }
+  .tl:hover::after { border-color: var(--accent-2); background: var(--accent-2); }
 }
-.tl__aside::after {
-  content: "";
-  position: absolute;
-  left: 8px; top: 30px; bottom: -34px;
-  width: 1px;
-  background: linear-gradient(var(--border-strong), transparent);
+
+@media screen and (max-width: 900px) {
+  .timeline { --marker-top: 33px; }
 }
-.tl:last-child .tl__aside::after { display: none; }
 
 .tl__logo {
   width: 40px; height: 40px;
@@ -908,6 +932,104 @@ mark.hit.is-active {
   transition: transform .28s var(--ease), box-shadow .28s var(--ease), color .28s var(--ease);
 }
 .pills li:hover { transform: translateY(-3px); color: var(--text); box-shadow: var(--glow); }
+
+/* A shared closing panel with quiet labels and a consistent reading rhythm.
+   Keep these treatments on screen so the validated PDF layout is unchanged. */
+@media screen {
+  .duo {
+    grid-template-columns: 1.2fr .8fr;
+    gap: 36px;
+    padding: clamp(22px, 3.2vw, 40px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+  }
+  .duo > .card {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
+  }
+  .duo > #interests { padding-left: 36px; border-left: 1px solid var(--border); }
+  .duo .section-title { margin-bottom: 28px; font-size: clamp(1.4rem, 2.4vw, 1.8rem); }
+  .duo .gradient-text {
+    background-image: linear-gradient(110deg, var(--accent), var(--accent-2));
+    background-size: 100% 100%;
+    background-attachment: scroll;
+  }
+  .duo .defs { gap: 0; margin: 0; }
+  .duo .def { padding: 20px 0; border-radius: 0; }
+  .duo .def:first-child { padding-top: 0; }
+  .duo .def:last-child { padding-bottom: 0; }
+  .duo .def + .def { border-top: 1px solid var(--border); }
+  .duo .def:hover { background: none; }
+  .duo .defs dt {
+    display: block;
+    margin: 0 0 9px;
+    color: var(--text-mute);
+    font-size: .82rem;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .duo .defs dt::after { display: none; }
+  .duo .def:hover dt { color: var(--accent-2); }
+  .duo .defs dd { font-size: .95rem; line-height: 1.7; }
+  .duo #general .def { display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 20px; }
+  .duo #general dt { margin: 2px 0 0; }
+  .duo .bullets { margin-top: 0; gap: 8px; }
+  .duo .bullets li { font-size: inherit; }
+  .duo .pills { display: block; }
+  .duo .pills li {
+    padding: 9px 0;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    background: none;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .duo .pills li:first-child { padding-top: 0; }
+  .duo .pills li:last-child { padding-bottom: 0; border-bottom: 0; }
+  .duo .pills li:hover { transform: none; box-shadow: none; color: var(--accent-2); }
+  .duo #general .def, .duo .pills li { position: relative; isolation: isolate; }
+  .duo #general .def::before, .duo .pills li::before {
+    content: "";
+    position: absolute;
+    inset: 8px -12px;
+    z-index: -1;
+    border-radius: var(--radius-md);
+    background: var(--row-hover);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s var(--ease);
+  }
+  .duo .pills li::before { top: 5px; bottom: 5px; }
+  .duo #general .def:first-child::before, .duo .pills li:first-child::before { top: -5px; }
+  .duo #general .def:last-child::before, .duo .pills li:last-child::before { bottom: -5px; }
+  .duo #general .def:hover::before, .duo .pills li:hover::before { opacity: 1; }
+}
+
+@media screen and (max-width: 900px) {
+  .duo > #interests { padding: 28px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+}
+
+@media screen and (max-width: 520px) {
+  .duo { gap: 28px; }
+  .duo #general .def { grid-template-columns: 1fr; gap: 6px; }
+  .duo #general dt { margin: 0; }
+  .duo .def { padding: 18px 0; }
+}
 
 kbd {
   display: inline-grid;
