@@ -619,7 +619,7 @@ mark.hit.is-active {
   text-decoration: none;
   transform: translateY(-3px);
   border-color: var(--border-strong);
-  box-shadow: var(--glow);
+  box-shadow: 0 0 0 1px rgba(var(--net), .18), 0 12px 26px -10px rgba(109, 59, 255, .4);
 }
 .btn--primary > .lift-surface {
   border: 0;
