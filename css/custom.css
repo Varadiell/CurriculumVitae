@@ -816,6 +816,12 @@ mark.hit.is-active {
   margin-bottom: 6px;
 }
 
+.tl__mission {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
 .tl__lead { font-weight: 600; color: var(--text); }
 .tl__lead--second { margin-top: 16px; }
 .tl__lead .hl { color: var(--accent-2); }
@@ -1356,6 +1362,7 @@ body.lang-swap .page { opacity: .35; }
   .tl__contract, .tl__date { display: inline; font-size: 9.5pt; color: var(--text-mute); }
   .tl__date::before { content: " | "; }
   .tl__date + .tl__contract::before { content: " / "; }
+  .tl__mission { gap: 6pt; }
   .tl__lead { font-size: 10pt; font-weight: 600; }
   .tl__lead--second { margin-top: 5pt; }
   .tl__lead .hl { color: inherit; }
