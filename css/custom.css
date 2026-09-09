@@ -996,244 +996,192 @@ body.lang-swap .page { opacity: .35; }
   [data-reveal] { opacity: 1; transform: none; }
 }
 
-/* ============ 16. Print (A4) ============ */
+/* ============ 16. Print (A4 / linear, selectable text for ATS) ============ */
 
 @media print {
-  @page { size: A4; margin: 11mm 10mm 9mm; }
+  @page { size: A4; margin: 14mm 16mm; }
 
   html, html[data-theme="dark"], html[data-theme="light"] {
     --bg: #fff;
-    --bg-2: #fff;
-    --surface: #fff;
-    --surface-strong: #fff;
-    --border: #ded6f2;
-    --border-strong: #c0b2e6;
-    --text: #16102a;
-    --text-soft: #332b49;
-    --text-mute: #6a6288;
-    --accent: #4d16bd;
-    --accent-2: #d81b60;
-    --chip-bg: #f7f4fe;
+    --surface: transparent;
+    --text: #202532;
+    --text-soft: #303744;
+    --text-mute: #505968;
+    --accent: #40376a;
+    --accent-2: #40376a;
+    --border: #c8cbd3;
     --row-hover: transparent;
-    --shadow: none;
-    --glow: none;
+    color-scheme: light;
   }
 
-  /* Chrome drops backgrounds when "Background graphics" is off — the pills,
-     logo plates and gradient rules are the whole point here, so force them. */
+  /* Print must not capture a reveal, a theme transition or a search state. */
   *, *::before, *::after {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+    animation: none !important;
+    /* Positioned screen elements otherwise change PDF paint/text order. */
+    position: static !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
+    letter-spacing: normal !important;
   }
 
   body {
     background: #fff !important;
     color: var(--text);
-    font-size: 9.4pt;
-    line-height: 1.4;
-    letter-spacing: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1.35;
+    overflow: visible;
   }
 
-  .d-print-none, .backdrop, .toolbar, .searchbar, .scroll-progress,
-  .scroll-hint, .hero__ring, .hero__tagline { display: none !important; }
+  .d-print-none, .sprite, .icon, .hero__portrait, .tl__logo,
+  .chip img, .edu__icon, .footer { display: none !important; }
 
-  mark.hit { background: none !important; color: inherit; box-shadow: none; padding: 0; }
-  .is-dim { opacity: 1 !important; filter: none !important; }
+  [data-reveal], .is-dim { opacity: 1 !important; }
+  mark.hit {
+    background: none !important;
+    color: inherit !important;
+    padding: 0;
+    margin: 0;
+  }
 
-  .page { width: 100%; padding: 0; gap: 12px; }
-
+  /* Normal document flow gives both PDF text extractors and humans the
+     same reading order. No fixed heights or clipped page containers. */
+  .page { display: block; width: auto; margin: 0; padding: 0; }
   .card {
+    margin: 0 0 12pt;
     padding: 0;
     border: 0;
     border-radius: 0;
     background: transparent;
-    box-shadow: none;
     backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
   }
 
-  [data-reveal] { opacity: 1 !important; transform: none !important; }
-
-  a, a:not(.btn) { color: var(--text-soft); background: none; }
-  .edu__meta a { color: var(--accent); }
-
-  /* ---- header ---- */
-  .hero {
-    grid-template-columns: 74px 1fr;
-    gap: 16px;
-    align-items: center;
-    padding: 0 0 4px;
-    break-inside: avoid;
+  a, a:not(.btn), .btn, .btn--primary, .btn:hover {
+    color: inherit;
+    background: none !important;
+    text-decoration: none;
   }
-  .hero__portrait { padding: 0; }
-  .hero__photo {
-    width: 74px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    box-shadow: none;
-  }
-  .hero__title { gap: 1px; }
-  .hero__name { font-size: 8.4pt; letter-spacing: .2em; color: var(--text-mute); }
-  .hero__role { font-size: 18pt; line-height: 1.06; }
-  .facts { margin-top: 5px; gap: 1px 16px; font-size: 8.8pt; color: var(--text-soft); }
-  .fact .icon { width: .95em; height: .95em; color: var(--accent); }
-  .counter { font-size: 9.4pt; }
-  .fact__value { gap: 4px; }
-  .cta { margin-top: 6px; gap: 5px; }
-  .btn {
-    padding: 2px 9px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: var(--chip-bg) !important;
-    color: var(--text) !important;
-    box-shadow: none;
-    font-size: 8.4pt;
-  }
-  .btn .icon { width: .95em; height: .95em; color: var(--accent); }
-
-  /* ---- section headings keep the brand gradient ---- */
   .gradient-text {
-    background-attachment: scroll;
-    background-size: 100% 100%;
-  }
-  .section-title .gradient-text {
     background: none;
-    -webkit-text-fill-color: var(--accent);
+    -webkit-text-fill-color: currentColor;
     color: var(--accent);
   }
+
+  /* Identity and contact details are real text in the document body. */
+  .hero {
+    display: block;
+    padding-bottom: 10pt;
+    border-bottom: 1.5pt solid var(--accent);
+    break-inside: avoid;
+  }
+  .hero__title { display: block; }
+  .hero__name {
+    display: block;
+    color: var(--text);
+    font-size: 25pt;
+    font-weight: 700;
+    line-height: 1.15;
+    text-transform: none;
+  }
+  .hero__role {
+    display: block;
+    margin-top: 4pt;
+    font-size: 14pt;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .hero__tagline { margin-top: 4pt; max-width: none; font-size: 10pt; }
+  .facts { display: block; margin-top: 5pt; font-size: 9.5pt; }
+  .fact, .fact__value { display: inline; }
+  .fact + .fact::before { content: " / "; color: var(--text-mute); }
+  .counter { font-size: inherit; }
+  .cta { display: block; margin-top: 5pt; }
+  .cta .btn {
+    display: block;
+    width: fit-content;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    font-size: 9.5pt;
+    font-weight: 400;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .cta a[href^="https://"]::after { content: ": " attr(href); }
 
   .section-title {
-    gap: 8px;
-    margin: 0 0 8px;
+    display: block;
+    margin: 0 0 6pt;
+    padding-bottom: 4pt;
+    border-bottom: .6pt solid var(--border);
     font-size: 12pt;
+    line-height: 1.2;
     break-after: avoid;
   }
-  .section-title .icon {
-    padding: .2em;
-    border-radius: 7px;
-    color: var(--accent);
-    background: var(--chip-bg);
-    border: 1px solid var(--border);
-  }
 
-  /* ---- skills: labelled row + icon pills ---- */
-  .skills { columns: 1; margin: 0; }
-  .skills__group {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 10px;
+  /* Labels and comma-separated skills remain one continuous text flow. */
+  .skills { columns: auto; margin: 0; }
+  .skills__group { display: block; margin: 0 0 3pt; padding: 0; break-inside: avoid; }
+  .skills__label {
+    display: inline;
     margin: 0;
-    padding: 0 0 5px;
+    font-size: inherit;
+    font-weight: 700;
+    text-transform: none;
+    color: var(--text);
+  }
+  .skills__label::after { content: ": "; display: inline; background: none; }
+  .chips, .pills { display: inline; }
+  .chip, .chip--sm, .pills li {
+    display: inline;
+    padding: 0;
+    border: 0;
     border-radius: 0;
     background: none;
-    break-inside: avoid;
+    color: inherit;
+    font-size: inherit;
+    font-weight: 400;
   }
-  .skills__label {
-    margin: 0;
-    padding-top: 1pt;
-    font-size: 7.8pt;
-    font-weight: 700;
-    letter-spacing: .07em;
-    color: var(--accent);
-  }
-  .skills__label::after { display: none; }
+  .chip:not(:last-child)::after, .pills li:not(:last-child)::after { content: ","; }
+  .chips--tech { display: block; margin-top: 3pt; color: var(--text-soft); font-size: 9.5pt; }
 
-  .chips { gap: 3px 4px; }
-  .chip {
-    padding: 1px 8px 1px 3px;
-    gap: 4px;
-    font-size: 7.9pt;
-    color: var(--text);
-    background: var(--chip-bg);
-    border: 1px solid var(--border);
-    box-shadow: none;
-  }
-  .chip img { width: 12px; height: 12px; padding: 1px; border-radius: 4px; }
-  .chip--sm { font-size: 7.5pt; padding: 0 7px 0 3px; }
-  .chip--sm img { width: 11px; height: 11px; }
-  .chips--tech { margin-top: 4px; }
-
-  /* ---- experience, logos kept ---- */
-  .timeline { gap: 0; }
-  .tl {
-    grid-template-columns: 176px 1fr;
-    gap: 14px;
-    padding: 6px 0;
-    break-inside: avoid;
-  }
-  .tl:hover { background: none; }
-  .tl__aside { padding-left: 0; gap: 8px; }
-  .tl__aside::before, .tl__aside::after { display: none; }
-  .tl__logo { width: 28px; height: 28px; padding: 2px; border-radius: 7px; }
-  .tl__org { font-size: 10pt; }
-  .tl__contract { font-size: 8.6pt; font-weight: 600; }
-  .tl__date { font-size: 8.2pt; margin-bottom: 2px; }
+  .timeline, .tl, .tl__aside, .tl__main { display: block; }
   .tl__main { padding: 0; }
-  .tl__lead { font-size: 9.4pt; }
-  .tl__lead--second { margin-top: 7px; }
-  .tl__sub { font-size: 8.2pt; }
-  .bullets { margin-top: 2px; gap: 0; }
-  .bullets li { font-size: 9.2pt; padding-left: 12px; color: var(--text-soft); }
-  .bullets li::before { width: 4px; height: 4px; top: .58em; opacity: 1; }
+  .tl { margin: 0 0 10pt; padding: 0; break-inside: avoid; }
+  .tl:last-child { margin-bottom: 0; }
+  .tl__aside { padding: 0; margin-bottom: 3pt; }
+  .tl__aside::before, .tl__aside::after { display: none; }
+  .tl__org { font-size: 11pt; line-height: 1.3; color: var(--text); }
+  .tl__contract, .tl__date { display: inline; font-size: 9.5pt; color: var(--text-mute); }
+  .tl__date::before { content: " | "; }
+  .tl__date + .tl__contract::before { content: " / "; }
+  .tl__lead { font-size: 10pt; font-weight: 600; }
+  .tl__lead--second { margin-top: 5pt; }
+  .tl__lead .hl { color: inherit; }
+  .tl__sub { font-size: 9.5pt; color: var(--text-mute); }
+  .bullets { display: block; margin: 3pt 0 0; padding-left: 13pt; list-style: disc; }
+  .bullets li { padding: 0; font-size: inherit; color: var(--text-soft); }
+  .bullets li::before { display: none; }
+  p, li { orphans: 2; widows: 2; }
 
-  /* ---- education ---- */
-  .edu { gap: 0; }
-  .edu__item {
-    grid-template-columns: 20px 124px 1fr;
-    align-items: center;
-    gap: 8px;
-    padding: 1pt 0;
-    border-top: 0;
-    break-inside: avoid;
-  }
-  .edu__item + .edu__item { border-top: 0; }
-  .edu__item:hover { background: none; }
-  .edu__icon {
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
-    align-self: center;
-  }
-  .edu__icon .icon { width: .95em; height: .95em; }
-  /* the <=900px rule pins .edu__what to column 2; A4 is narrower than that */
-  .edu__what { grid-column: auto; gap: 0 9px; }
-  .edu__when { align-self: center; font-size: 8.2pt; }
-  .edu__degree { font-size: 9.1pt; }
-  .edu__meta { font-size: 8.1pt; }
-  .edu__meta .tag { font-size: 8.1pt; }
-  .tag {
-    padding: 0 7px;
-    font-size: 7.8pt;
-    background: var(--chip-bg);
-    border: 1px solid var(--border);
-    color: var(--accent);
-    box-shadow: none;
-  }
+  .edu, .edu__item, .edu__what, .edu__meta { display: block; }
+  .edu__item { margin: 0 0 7pt; padding: 0; break-inside: avoid; }
+  .edu__when { font-size: 9.5pt; color: var(--text-mute); font-weight: 400; }
+  .edu__degree { font-size: 10pt; font-weight: 700; }
+  .edu__meta { margin-top: 1pt; font-size: 9.5pt; }
+  .tag { padding: 0; border: 0; background: none; color: inherit; font-size: inherit; }
+  .edu__meta .tag { margin-left: 4pt; }
+  .edu__meta .tag:first-child { margin-left: 0; }
 
-  /* ---- closing pair ---- */
-  .duo { grid-template-columns: 1fr 1fr; gap: 24px; break-inside: avoid; }
-  .defs { gap: 0; margin: 0; }
-  .def { padding: 0 0 9px; background: none; }
-  .defs dt {
-    margin-bottom: 4px;
-    font-size: 8pt;
-    letter-spacing: .07em;
-    gap: 7px;
-  }
-  .defs dt::after { height: .7pt; background: linear-gradient(90deg, var(--border-strong), transparent); }
-  .defs dd { font-size: 9.2pt; }
-  .pills { gap: 4px; }
-  .pills li {
-    padding: 1px 8px;
-    font-size: 8.2pt;
-    background: var(--chip-bg);
-    border: 1px solid var(--border);
-    box-shadow: none;
-  }
-
-  .footer {
-    justify-content: flex-start;
-    padding: 6px 0 0;
-    font-size: 7.8pt;
-    color: var(--text-mute);
-  }
+  .duo, .defs { display: block; margin: 0; }
+  .def { padding: 0; margin: 0 0 4pt; break-inside: avoid; }
+  .defs dt, .defs dd { display: inline; font-size: 10pt; }
+  .defs dt { margin: 0; color: var(--text); text-transform: none; }
+  .defs dt::after { content: ": "; display: inline; background: none; }
+  .defs dd .bullets { margin-top: 2pt; }
 }

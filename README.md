@@ -17,3 +17,25 @@ Open `index.html` directly, or serve the folder:
 ```bash
 python3 -m http.server 4173
 ```
+
+### Print / PDF
+
+Use the print button, `P`, or the browser's print command. The PDF uses the
+selected language (FR/EN) and a dedicated A4 layout: one column, selectable
+text, Arial, clear section headings, and visible contact URLs. Photos, icons,
+decorative backgrounds and the website footer are omitted. Experience and
+education entries stay together when possible; content flows onto additional
+pages if the resume grows. The current content fits two pages at 100% scale.
+
+Choose **Save as PDF**, **A4**, **portrait**, **100% scale**, and turn off the
+browser's **headers and footers** to avoid adding a date, URL and page numbers.
+Background graphics are optional. Printing also works from the dark theme or
+with an active search; search highlighting and badge interaction are restored
+after printing or cancelling.
+
+The layout follows [Greenhouse's resume parsing guidance](https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse)
+by avoiding columns, graphics and contact details in page headers or footers.
+This improves ATS readability, but parsing varies between vendors. To check an
+export, select/copy its text into a plain-text editor: name, contact details,
+skills, experiences, education and languages should appear in reading order.
+Check both languages in print preview after changing the content.

@@ -122,6 +122,36 @@
 
   /* ---------- Print ---------- */
 
+  // Native print (button, P or browser menu) uses the same print stylesheet.
+  // Remove search markup and interactive badge roles from the PDF text layer,
+  // then restore the screen state when the print dialog closes or is cancelled.
+  var printBadges = [];
+  var preparingPrint = false;
+  var printHitIndex = 0;
+  window.addEventListener('beforeprint', function () {
+    if (preparingPrint) { return; }
+    preparingPrint = true;
+    printHitIndex = hitIndex;
+    clearSearch();
+    printBadges = [].slice.call(document.querySelectorAll('.chip[role="button"]'));
+    printBadges.forEach(function (badge) {
+      badge.removeAttribute('role');
+      badge.removeAttribute('tabindex');
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    if (!preparingPrint) { return; }
+    printBadges.forEach(function (badge) {
+      badge.setAttribute('role', 'button');
+      badge.setAttribute('tabindex', '0');
+    });
+    preparingPrint = false;
+    if (searchTerm) {
+      applySearch(searchTerm);
+      focusHit(printHitIndex, false);
+    }
+  });
+
   var printBtn = document.getElementById('printBtn');
   if (printBtn) { printBtn.addEventListener('click', function () { window.print(); }); }
 
