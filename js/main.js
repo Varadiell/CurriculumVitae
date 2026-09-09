@@ -367,7 +367,13 @@
      the rows that hold none; clicking a technology badge runs the same
      query so its twins light up across the whole resume.                  */
 
-  var DIMMABLE = '.chip, .pills li, .tl, .edu__item';
+  // Apply the same rule to every content block, keeping section headings as
+  // navigation landmarks. Children are checked only when their parent matches.
+  var DIMMABLE = [
+    '.hero__title', '.hero__tagline', '.fact', '.cta .btn',
+    '.skills__group', '.chip', '.tl', '.edu__item',
+    '.def', '.pills li', '.language-list li', '.footer'
+  ].join(', ');
   var FOLDED = 'àáâäãçèéêëìíîïñòóôöõùúûüýÿ';
   var PLAIN = 'aaaaaceeeeiiiinooooouuuuyy';
 
@@ -465,7 +471,9 @@
 
     var rows = pageEl.querySelectorAll(DIMMABLE);
     for (var i = 0; i < rows.length; i++) {
-      if (!rows[i].querySelector('mark.hit')) { rows[i].classList.add('is-dim'); }
+      if (!rows[i].querySelector('mark.hit') && !rows[i].parentElement.closest('.is-dim')) {
+        rows[i].classList.add('is-dim');
+      }
     }
 
     focusHit(0, false);

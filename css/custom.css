@@ -238,6 +238,22 @@ html[data-theme="light"] .aurora { opacity: .26; }
   transition: width .1s linear;
 }
 
+/* The interactive box stays in normal flow. Only its inner surface moves;
+   pointer events stay on the fixed box even along its lower edge. */
+.lang-btn, .icon-btn, .btn, .chip, .tag {
+  display: inline-flex;
+  position: relative;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  vertical-align: middle;
+}
+.lift-surface { pointer-events: none; }
+.lang-btn, .icon-btn, .btn { cursor: pointer; }
+
 /* ============ 5. Toolbar ============ */
 
 .toolbar {
@@ -257,7 +273,7 @@ html[data-theme="light"] .aurora { opacity: .26; }
   box-shadow: var(--shadow);
 }
 
-.lang-btn {
+.lang-btn > .lift-surface {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -272,14 +288,14 @@ html[data-theme="light"] .aurora { opacity: .26; }
   cursor: pointer;
   transition: color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
 }
-.lang-btn:hover {
+.lang-btn:hover > .lift-surface {
   color: var(--text);
   border-color: var(--border-strong);
   transform: translateY(-2px);
 }
 .lang-btn .icon { width: 1.05em; height: 1.05em; color: var(--accent); }
 
-.icon-btn {
+.icon-btn > .lift-surface {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -293,7 +309,7 @@ html[data-theme="light"] .aurora { opacity: .26; }
   cursor: pointer;
   transition: color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), background-color .3s var(--ease);
 }
-.icon-btn:hover {
+.icon-btn:hover > .lift-surface {
   color: var(--text);
   border-color: var(--border-strong);
   transform: translateY(-2px);
@@ -322,9 +338,22 @@ html[data-theme="light"] .icon--sun { opacity: 0; transform: rotate(-90deg) scal
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   box-shadow: var(--shadow);
-  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+  isolation: isolate;
+  transition: border-color .3s var(--ease);
 }
-.searchbar:focus-within { border-color: var(--border-strong); box-shadow: var(--glow); }
+.searchbar::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  box-shadow: var(--glow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s var(--ease);
+}
+.searchbar:focus-within { border-color: var(--border-strong); }
+.searchbar:focus-within::after { opacity: 1; }
 .searchbar__glass { color: var(--accent); }
 
 .searchbar__input {
@@ -430,13 +459,6 @@ mark.hit.is-active {
   box-shadow: 0 4px 14px -6px rgba(255, 63, 129, .9);
 }
 
-.is-dim {
-  opacity: .3;
-  filter: saturate(.35);
-  transition: opacity .3s var(--ease), filter .3s var(--ease);
-}
-.is-dim .is-dim { opacity: 1; filter: none; }
-
 .chip { cursor: pointer; }
 .chip:focus-visible { outline-offset: 2px; }
 
@@ -472,6 +494,14 @@ mark.hit.is-active {
   transition: opacity .8s var(--ease), transform .8s var(--ease);
 }
 [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* Search attenuation wins over reveal opacity. JS dims only the outermost
+   non-matching block, so nested rows never multiply opacity or filters. */
+.page .is-dim {
+  opacity: .3;
+  filter: grayscale(1);
+  transition: opacity .3s var(--ease), filter .3s var(--ease);
+}
 
 .section-title {
   display: flex;
@@ -571,7 +601,7 @@ mark.hit.is-active {
   gap: 10px;
   margin-top: 26px;
 }
-.btn {
+.btn > .lift-surface {
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -585,20 +615,20 @@ mark.hit.is-active {
   box-shadow: none;
   transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
 }
-.btn:hover {
+.btn:hover > .lift-surface {
   color: var(--text);
   text-decoration: none;
   transform: translateY(-3px);
   border-color: var(--border-strong);
   box-shadow: var(--glow);
 }
-.btn--primary {
+.btn--primary > .lift-surface {
   border: 0;
   padding: 12px 19px;
   background: var(--gradient);
   color: #fff;
 }
-.btn--primary:hover {
+.btn--primary:hover > .lift-surface {
   color: #fff;
   filter: saturate(1.12);
   box-shadow: 0 14px 34px -16px rgba(255, 63, 129, .9);
@@ -656,7 +686,7 @@ mark.hit.is-active {
 }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip {
+.chip > .lift-surface {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -678,13 +708,13 @@ mark.hit.is-active {
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
-.chip:hover {
+.chip:hover > .lift-surface {
   transform: translateY(-3px);
   color: var(--text);
   border-color: var(--border-strong);
   box-shadow: var(--glow);
 }
-.chip--sm { padding: 4px 10px 4px 6px; font-size: .8rem; }
+.chip--sm > .lift-surface { padding: 4px 10px 4px 6px; font-size: .8rem; }
 .chip--sm img { width: 17px; height: 17px; padding: 1.5px; border-radius: 5px; }
 .chips--tech { margin-top: 14px; }
 
@@ -870,7 +900,7 @@ mark.hit.is-active {
   color: var(--text-mute);
 }
 .sep { opacity: .5; }
-.tag {
+.tag > .lift-surface {
   padding: 2px 10px;
   border-radius: 999px;
   border: 1px solid var(--border);
@@ -879,7 +909,7 @@ mark.hit.is-active {
   color: var(--text-soft);
   transition: transform .28s var(--ease), color .28s var(--ease), border-color .28s var(--ease), box-shadow .28s var(--ease);
 }
-.tag:hover {
+.tag:hover > .lift-surface {
   transform: translateY(-2px);
   color: var(--text);
   border-color: var(--border-strong);
@@ -1182,6 +1212,9 @@ body.lang-swap .page { opacity: .35; }
 
   /* Normal document flow gives both PDF text extractors and humans the
      same reading order. No fixed heights or clipped page containers. */
+  .lift-surface { display: contents !important; color: inherit !important; font: inherit !important; }
+  .btn, .chip, .tag { vertical-align: baseline; }
+  .tag { display: inline; }
   .page { display: block; width: auto; margin: 0; padding: 0; }
   .card {
     margin: 0 0 12pt;
