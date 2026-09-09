@@ -480,15 +480,6 @@ mark.hit.is-active {
   margin-bottom: 26px;
   font-size: clamp(1.35rem, 2.6vw, 1.9rem);
 }
-.section-title .icon {
-  width: 1.15em; height: 1.15em;
-  padding: .34em;
-  box-sizing: content-box;
-  border-radius: 14px;
-  color: var(--accent);
-  background: var(--chip-bg);
-  border: 1px solid var(--border);
-}
 
 /* ============ 7. Hero ============ */
 
