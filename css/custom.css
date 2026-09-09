@@ -1043,19 +1043,27 @@ mark.hit.is-active {
   .language-note { color: var(--text-mute); font-size: .76rem; }
   .duo .bullets { margin-top: 0; gap: 8px; }
   .duo .bullets li { font-size: inherit; }
-  .duo .pills { display: block; }
+  .duo .pills { display: flex; flex-direction: column; gap: 8px; }
   .duo .pills li {
-    padding: 9px 0;
+    position: relative;
+    padding: 0 0 0 18px;
     border: 0;
-    border-bottom: 1px solid var(--border);
     border-radius: 0;
     background: none;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: .9rem;
+    font-weight: 400;
     line-height: 1.5;
   }
-  .duo .pills li:first-child { padding-top: 0; }
-  .duo .pills li:last-child { padding-bottom: 0; border-bottom: 0; }
+  .duo .pills li::before {
+    content: "";
+    position: absolute;
+    left: 2px; top: .62em;
+    width: 6px; height: 6px;
+    border-radius: 2px;
+    background: var(--accent);
+    opacity: .65;
+    transform: rotate(45deg);
+  }
   .duo .pills li:hover { transform: none; box-shadow: none; color: inherit; }
   .duo .def { position: relative; isolation: isolate; }
   .duo .def::before {
