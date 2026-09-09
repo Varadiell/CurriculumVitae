@@ -10,6 +10,8 @@
   --violet-deep: #4d16bd;
   --pink: #ff3f81;
   --gradient: linear-gradient(100deg, #4d16bd 0%, #7c3aed 42%, #ff3f81 100%);
+  --control-shadow: 0 0 0 1px rgba(var(--net), .18), 0 12px 26px -10px rgba(109, 59, 255, .4);
+  --control-shadow-sm: 0 0 0 1px rgba(var(--net), .18), 0 8px 18px -6px rgba(109, 59, 255, .4);
 
   --radius-lg: 26px;
   --radius-md: 16px;
@@ -286,12 +288,13 @@ html[data-theme="light"] .aurora { opacity: .26; }
   font: 600 12.5px/1 var(--font);
   letter-spacing: .09em;
   cursor: pointer;
-  transition: color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+  transition: color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .lang-btn:hover > .lift-surface {
   color: var(--text);
   border-color: var(--border-strong);
   transform: translateY(-2px);
+  box-shadow: var(--control-shadow-sm);
 }
 .lang-btn .icon { width: 1.05em; height: 1.05em; color: var(--accent); }
 
@@ -307,12 +310,13 @@ html[data-theme="light"] .aurora { opacity: .26; }
   color: var(--text-soft);
   font-size: 17px;
   cursor: pointer;
-  transition: color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), background-color .3s var(--ease);
+  transition: color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), background-color .3s var(--ease), box-shadow .3s var(--ease);
 }
 .icon-btn:hover > .lift-surface {
   color: var(--text);
   border-color: var(--border-strong);
   transform: translateY(-2px);
+  box-shadow: var(--control-shadow-sm);
 }
 .icon-btn:hover kbd, .lang-btn:hover kbd { color: var(--text); }
 
@@ -619,7 +623,7 @@ mark.hit.is-active {
   text-decoration: none;
   transform: translateY(-3px);
   border-color: var(--border-strong);
-  box-shadow: 0 0 0 1px rgba(var(--net), .18), 0 12px 26px -10px rgba(109, 59, 255, .4);
+  box-shadow: var(--control-shadow);
 }
 .btn--primary > .lift-surface {
   border: 0;
@@ -711,7 +715,7 @@ mark.hit.is-active {
   transform: translateY(-3px);
   color: var(--text);
   border-color: var(--border-strong);
-  box-shadow: var(--glow);
+  box-shadow: var(--control-shadow-sm);
 }
 .chip--sm > .lift-surface { padding: 4px 10px 4px 6px; font-size: .8rem; }
 .chip--sm img { width: 17px; height: 17px; padding: 1.5px; border-radius: 5px; }
@@ -919,7 +923,7 @@ mark.hit.is-active {
   transform: translateY(-2px);
   color: var(--text);
   border-color: var(--border-strong);
-  box-shadow: var(--glow);
+  box-shadow: var(--control-shadow-sm);
 }
 
 /* ============ 11. Duo (general + interests) ============ */
