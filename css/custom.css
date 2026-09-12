@@ -170,32 +170,34 @@ html.theme-switching *::after {
   transition: background-color .45s var(--ease);
 }
 
+/* The softness comes from the gradient itself. A `filter: blur(90px)` on
+   three viewport-sized blobs was the single most expensive thing to raster,
+   and it delayed the first paint by seconds on slow devices. */
 .aurora {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: .38;
+  opacity: .42;
   will-change: transform;
 }
-html[data-theme="light"] .aurora { opacity: .26; }
+html[data-theme="light"] .aurora { opacity: .3; }
 
 .aurora--1 {
-  width: 46vw; height: 46vw; min-width: 340px; min-height: 340px;
-  top: -12vw; left: -8vw;
-  background: radial-gradient(circle, #6d3bff, transparent 65%);
+  width: 56vw; height: 56vw; min-width: 420px; min-height: 420px;
+  top: -18vw; left: -14vw;
+  background: radial-gradient(closest-side, rgba(109, 59, 255, .95), rgba(109, 59, 255, .5) 34%, rgba(109, 59, 255, .14) 64%, transparent 100%);
   animation: drift1 26s ease-in-out infinite alternate;
 }
 .aurora--2 {
-  width: 40vw; height: 40vw; min-width: 300px; min-height: 300px;
-  top: 30vh; right: -12vw;
-  background: radial-gradient(circle, #ff3f81, transparent 65%);
+  width: 50vw; height: 50vw; min-width: 380px; min-height: 380px;
+  top: 26vh; right: -18vw;
+  background: radial-gradient(closest-side, rgba(255, 63, 129, .95), rgba(255, 63, 129, .5) 34%, rgba(255, 63, 129, .14) 64%, transparent 100%);
   animation: drift2 32s ease-in-out infinite alternate;
 }
 .aurora--3 {
-  width: 38vw; height: 38vw; min-width: 280px; min-height: 280px;
-  bottom: -14vw; left: 22vw;
-  background: radial-gradient(circle, #1fb6ff, transparent 65%);
-  opacity: .3;
+  width: 48vw; height: 48vw; min-width: 360px; min-height: 360px;
+  bottom: -20vw; left: 18vw;
+  background: radial-gradient(closest-side, rgba(31, 182, 255, .9), rgba(31, 182, 255, .45) 34%, rgba(31, 182, 255, .12) 64%, transparent 100%);
+  opacity: .32;
   animation: drift3 38s ease-in-out infinite alternate;
 }
 
@@ -463,7 +465,7 @@ mark.hit.is-active {
 }
 
 .chip { cursor: pointer; }
-.chip:focus-visible { outline-offset: 2px; }
+.chip > .lift-surface:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ============ 6. Layout ============ */
 
@@ -485,18 +487,14 @@ mark.hit.is-active {
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(22px) saturate(150%);
-  -webkit-backdrop-filter: blur(22px) saturate(150%);
   overflow: hidden;
 }
 
-/* reveal on scroll */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity .8s var(--ease), transform .8s var(--ease);
-}
-[data-reveal].is-in { opacity: 1; transform: none; }
+/* reveal on scroll — nothing is hidden by default: the script marks only
+   the blocks that start below the fold, so the first screen (and the LCP)
+   paints immediately, and the page still reads without JavaScript */
+[data-reveal] { transition: opacity .8s var(--ease), transform .8s var(--ease); }
+[data-reveal].is-out { opacity: 0; transform: translateY(26px); }
 
 /* Search attenuation wins over reveal opacity. JS dims only the outermost
    non-matching block, so nested rows never multiply opacity or filters. */
@@ -551,7 +549,7 @@ mark.hit.is-active {
   opacity: .45;
   animation: pulse 6s ease-in-out infinite;
 }
-@keyframes pulse { 50% { opacity: .8; transform: scale(1.03); } }
+@keyframes pulse { 50% { opacity: .8; } }
 
 .hero__title {
   display: flex;
@@ -988,8 +986,6 @@ mark.hit.is-active {
     border-radius: var(--radius-lg);
     background: var(--surface);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(22px) saturate(150%);
-    -webkit-backdrop-filter: blur(22px) saturate(150%);
   }
   .duo > .card {
     min-width: 0;

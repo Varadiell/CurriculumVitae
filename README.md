@@ -12,6 +12,10 @@ Static resume — no framework, no build step, no runtime dependency.
 Language (FR/EN) and theme (dark/light) are picked from the browser on first visit,
 then remembered in `localStorage`. Keyboard: `L` switches language, `T` switches theme.
 
+Images: chips use the 56px copies in `images/icons/sm/`, company logos the
+80px copies in `images/icons/logos/` (both generated with `sips -Z` from the
+128px originals); the portrait ships as AVIF with a PNG fallback.
+
 Open `index.html` directly, or serve the folder:
 
 ```bash
@@ -24,7 +28,9 @@ Use the print button, `P`, or the browser's print command. The PDF uses the
 selected language (FR/EN) and a dedicated A4 layout: one column, selectable
 text, Arial, clear section headings, and visible contact URLs. Small decorative
 logos accompany technical skills and company names; their labels remain real
-text. These images load eagerly so printing does not depend on scrolling first.
+text. These images are fetched right after the page's `load` event (not lazily
+on scroll), so printing does not depend on scrolling first, while the first
+paint and the portrait are never queued behind them.
 The portrait, interface icons, decorative backgrounds and website footer are
 omitted. The job title is larger than the name. Experience and education
 entries stay together when possible; content flows onto additional

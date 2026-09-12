@@ -120,6 +120,28 @@
     });
   }
 
+  /* ---------- Technology icons ----------
+     Seventy small logos sit below the fold. They are fetched right after the
+     load event rather than lazily on scroll, so the first paint and the hero
+     photo are never queued behind them, and a print job still finds them
+     loaded without any scrolling. */
+
+  var deferredIcons = [].slice.call(document.querySelectorAll('img[data-src]'));
+
+  function loadDeferredIcons() {
+    deferredIcons.forEach(function (img) {
+      img.src = img.getAttribute('data-src');
+      img.removeAttribute('data-src');
+    });
+    deferredIcons = [];
+  }
+
+  if (document.readyState === 'complete') {
+    loadDeferredIcons();
+  } else {
+    window.addEventListener('load', loadDeferredIcons);
+  }
+
   /* ---------- Print ---------- */
 
   // Native print (button, P or browser menu) uses the same print stylesheet.
@@ -129,11 +151,12 @@
   var preparingPrint = false;
   var printHitIndex = 0;
   window.addEventListener('beforeprint', function () {
+    loadDeferredIcons();
     if (preparingPrint) { return; }
     preparingPrint = true;
     printHitIndex = hitIndex;
     clearSearch();
-    printBadges = [].slice.call(document.querySelectorAll('.chip[role="button"]'));
+    printBadges = [].slice.call(document.querySelectorAll('.chip [role="button"], .chip[role="button"]'));
     printBadges.forEach(function (badge) {
       badge.removeAttribute('role');
       badge.removeAttribute('tabindex');
@@ -202,14 +225,21 @@
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) { return; }
-        entry.target.classList.add('is-in');
+        entry.target.classList.remove('is-out');
         observer.unobserve(entry.target);
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
 
-    revealables.forEach(function (el) { observer.observe(el); });
-  } else {
-    revealables.forEach(function (el) { el.classList.add('is-in'); });
+    // Only blocks that start below the fold are hidden and animated in. The
+    // first screen is never painted transparent, which keeps it eligible as
+    // the Largest Contentful Paint instead of the toolbar's language label.
+    var foldLine = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.getBoundingClientRect().top > foldLine) {
+        el.classList.add('is-out');
+        observer.observe(el);
+      }
+    });
   }
 
   /* ---------- Scroll progress ---------- */
@@ -524,10 +554,12 @@
 
   /* badges act as saved queries */
   if (pageEl) {
+    // the role goes on the inner surface: a <li> must stay a list item
     var badges = pageEl.querySelectorAll('.chip');
     for (var b = 0; b < badges.length; b++) {
-      badges[b].setAttribute('role', 'button');
-      badges[b].setAttribute('tabindex', '0');
+      var handle = badges[b].querySelector('.lift-surface') || badges[b];
+      handle.setAttribute('role', 'button');
+      handle.setAttribute('tabindex', '0');
     }
 
     function queryFromBadge(badge) {

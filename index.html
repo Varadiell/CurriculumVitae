@@ -10,8 +10,8 @@
     <meta name="theme-color" content="#0d0618">
     <meta name="color-scheme" content="dark light">
     <link rel="icon" type="image/x-icon" href="images/frog_ico_32.ico">
-    <link rel="preload" as="image" href="images/photo_200.png">
-    <link href="css/custom.css" rel="stylesheet">
+    <link rel="preload" as="image" href="images/photo_200.avif" type="image/avif" fetchpriority="high">
+    <link href="css/custom.css?v=20260912" rel="stylesheet">
 
     <!-- Restore theme + language before first paint -->
     <script>
@@ -170,7 +170,10 @@
       <!-- ============ Hero ============ -->
       <section class="hero card" data-reveal>
         <div class="hero__portrait">
-          <img src="images/photo_200.png" width="150" height="200" alt="William SIMON--VEZO" class="hero__photo">
+          <picture>
+            <source type="image/avif" srcset="images/photo_200.avif">
+            <img src="images/photo_200.png" width="150" height="200" alt="William SIMON--VEZO" class="hero__photo" fetchpriority="high" decoding="async">
+          </picture>
           <span class="hero__ring" aria-hidden="true"></span>
         </div>
 
@@ -237,87 +240,87 @@
           <div class="skills__group">
             <h3 class="skills__label" data-i18n="skills.languages">Programming Languages</h3>
             <ul class="chips">
-              <li class="chip"><span class="lift-surface"><img src="images/icons/typescript_128.png" alt="" loading="eager">TypeScript</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/javascript_128.png" alt="" loading="eager">JavaScript</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/solidity_128.png" alt="" loading="eager">Solidity</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/java_128.png" alt="" loading="eager">Java</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/python_128.png" alt="" loading="eager">Python</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/php_128.png" alt="" loading="eager">PHP</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/typescript.png" alt="" width="20" height="20">TypeScript</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/javascript.png" alt="" width="20" height="20">JavaScript</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/solidity.png" alt="" width="20" height="20">Solidity</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/java.png" alt="" width="20" height="20">Java</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/python.png" alt="" width="20" height="20">Python</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/php.png" alt="" width="20" height="20">PHP</span></li>
             </ul>
           </div>
 
           <div class="skills__group">
             <h3 class="skills__label" data-i18n="skills.frameworks">Frameworks</h3>
             <ul class="chips">
-              <li class="chip"><span class="lift-surface"><img src="images/icons/react_128.png" alt="" loading="eager">React</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/nextjs_128.png" alt="" loading="eager">Next.js</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/react_native_128.png" alt="" loading="eager">React Native</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/express_128.png" alt="" loading="eager">Express</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/nestjs_128.png" alt="" loading="eager">NestJS</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/nuxt_128.png" alt="" loading="eager">Nuxt</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/vue_128.png" alt="" loading="eager">Vue</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/react.png" alt="" width="20" height="20">React</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/nextjs.png" alt="" width="20" height="20">Next.js</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/react_native.png" alt="" width="20" height="20">React Native</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/express.png" alt="" width="20" height="20">Express</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/nestjs.png" alt="" width="20" height="20">NestJS</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/nuxt.png" alt="" width="20" height="20">Nuxt</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/vue.png" alt="" width="20" height="20">Vue</span></li>
             </ul>
           </div>
 
           <div class="skills__group">
             <h3 class="skills__label" data-i18n="skills.uiux">UI/UX</h3>
             <ul class="chips">
-              <li class="chip"><span class="lift-surface"><img src="images/icons/shadcn_128.png" alt="" loading="eager">shadcn/ui</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/radixui_128.png" alt="" loading="eager">Radix UI</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/bootstrap_128.png" alt="" loading="eager">Bootstrap</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/figma_128.png" alt="" loading="eager">Figma</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/shadcn.png" alt="" width="20" height="20">shadcn/ui</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/radixui.png" alt="" width="20" height="20">Radix UI</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/bootstrap.png" alt="" width="20" height="20">Bootstrap</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/figma.png" alt="" width="20" height="20">Figma</span></li>
             </ul>
           </div>
 
           <div class="skills__group">
             <h3 class="skills__label" data-i18n="skills.databases">Databases</h3>
             <ul class="chips">
-              <li class="chip"><span class="lift-surface"><img src="images/icons/mongodb_128.png" alt="" loading="eager">MongoDB</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/mysql_128.png" alt="" loading="eager">MySQL</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/postgresql_128.png" alt="" loading="eager">PostgreSQL</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/sqlite3_128.png" alt="" loading="eager">SQLite3</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/mongodb.png" alt="" width="20" height="20">MongoDB</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/mysql.png" alt="" width="20" height="20">MySQL</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/postgresql.png" alt="" width="20" height="20">PostgreSQL</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/sqlite3.png" alt="" width="20" height="20">SQLite3</span></li>
             </ul>
           </div>
 
           <div class="skills__group">
             <h3 class="skills__label" data-i18n="skills.testing">Testing</h3>
             <ul class="chips">
-              <li class="chip"><span class="lift-surface"><img src="images/icons/chai_128.png" alt="" loading="eager">Chai</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/vitest_128.png" alt="" loading="eager">Vitest</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/playwright_128.png" alt="" loading="eager">Playwright</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/hardhat_128.png" alt="" loading="eager">Hardhat</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/foundry_128.png" alt="" loading="eager">Foundry</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/cucumber_128.png" alt="" loading="eager">Cucumber</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/chai.png" alt="" width="20" height="20">Chai</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/vitest.png" alt="" width="20" height="20">Vitest</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/playwright.png" alt="" width="20" height="20">Playwright</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/hardhat.png" alt="" width="20" height="20">Hardhat</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/foundry.png" alt="" width="20" height="20">Foundry</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/cucumber.png" alt="" width="20" height="20">Cucumber</span></li>
             </ul>
           </div>
 
           <div class="skills__group">
             <h3 class="skills__label" data-i18n="skills.cicd">CI/CD</h3>
             <ul class="chips">
-              <li class="chip"><span class="lift-surface"><img src="images/icons/vercel_128.png" alt="" loading="eager">Vercel</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/docker_128.png" alt="" loading="eager">Docker</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/github_128.png" alt="" loading="eager">GitHub Actions</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/eslint_128.png" alt="" loading="eager">ESLint</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/codespell_128.png" alt="" loading="eager">CodeSpell</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/vercel.png" alt="" width="20" height="20">Vercel</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/docker.png" alt="" width="20" height="20">Docker</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/github.png" alt="" width="20" height="20">GitHub Actions</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/eslint.png" alt="" width="20" height="20">ESLint</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/codespell.png" alt="" width="20" height="20">CodeSpell</span></li>
             </ul>
           </div>
 
           <div class="skills__group">
             <h3 class="skills__label" data-i18n="skills.api">API</h3>
             <ul class="chips">
-              <li class="chip"><span class="lift-surface"><img src="images/icons/graphql_128.png" alt="" loading="eager">GraphQL</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/fastapi_128.png" alt="" loading="eager">FastAPI</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/insomnia_128.png" alt="" loading="eager">Insomnia</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/postman_128.png" alt="" loading="eager">Postman</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/graphql.png" alt="" width="20" height="20">GraphQL</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/fastapi.png" alt="" width="20" height="20">FastAPI</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/insomnia.png" alt="" width="20" height="20">Insomnia</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/postman.png" alt="" width="20" height="20">Postman</span></li>
             </ul>
           </div>
 
           <div class="skills__group">
             <h3 class="skills__label" data-i18n="skills.ml">Machine/Deep Learning</h3>
             <ul class="chips">
-              <li class="chip"><span class="lift-surface"><img src="images/icons/tensorflow_128.png" alt="" loading="eager">TensorFlow</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/scikitlearn_128.png" alt="" loading="eager">Scikit-Learn</span></li>
-              <li class="chip"><span class="lift-surface"><img src="images/icons/jupyter_128.png" alt="" loading="eager">Jupyter Notebook</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/tensorflow.png" alt="" width="20" height="20">TensorFlow</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/scikitlearn.png" alt="" width="20" height="20">Scikit-Learn</span></li>
+              <li class="chip"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/jupyter.png" alt="" width="20" height="20">Jupyter Notebook</span></li>
             </ul>
           </div>
         </div>
@@ -333,7 +336,7 @@
 
           <li class="tl" data-reveal>
             <div class="tl__aside">
-              <img class="tl__logo" src="images/icons/code_and_sorcery_128.png" alt="" loading="eager">
+              <img class="tl__logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/logos/code_and_sorcery.png" alt="" width="80" height="80">
               <div>
                 <p class="tl__org">Code and Sorcery</p>
                 <p class="tl__contract" data-i18n="xp.cas.contract">Freelance</p>
@@ -342,38 +345,38 @@
             </div>
             <div class="tl__main">
               <div class="tl__mission">
-                <img class="tl__logo" src="images/icons/anytime_128.png" alt="" loading="eager" width="128" height="128">
+                <img class="tl__logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/logos/anytime.png" alt="" width="80" height="80">
                 <div>
                   <p class="tl__lead"><b class="hl">Anytime</b></p>
                   <p class="tl__sub" data-i18n="xp.cas.anytime.period">May 2026 - Present</p>
                 </div>
               </div>
               <ul class="chips chips--tech">
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/typescript_128.png" alt="" loading="lazy">TypeScript</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/php_128.png" alt="" loading="lazy">PHP</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/react_128.png" alt="" loading="lazy">React</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/postgresql_128.png" alt="" loading="lazy">PostgreSQL</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/typescript.png" alt="" width="20" height="20">TypeScript</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/php.png" alt="" width="20" height="20">PHP</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/react.png" alt="" width="20" height="20">React</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/postgresql.png" alt="" width="20" height="20">PostgreSQL</span></li>
               </ul>
               <div class="tl__mission">
-                <img class="tl__logo" src="images/icons/meria_128.png" alt="" loading="eager" width="128" height="128">
+                <img class="tl__logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/logos/meria.png" alt="" width="80" height="80">
                 <div>
                   <p class="tl__lead"><b class="hl">Meria</b><span data-i18n="xp.cas.lead">: unannounced project related to cryptocurrencies, coming soon.</span></p>
                   <p class="tl__sub" data-i18n="xp.cas.period">May 2025 - April 2026</p>
                 </div>
               </div>
               <ul class="chips chips--tech">
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/react_128.png" alt="" loading="lazy">React</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/nestjs_128.png" alt="" loading="lazy">NestJS</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/mongodb_128.png" alt="" loading="lazy">MongoDB</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/postgresql_128.png" alt="" loading="lazy">PostgreSQL</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/typescript_128.png" alt="" loading="lazy">TypeScript</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/react.png" alt="" width="20" height="20">React</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/nestjs.png" alt="" width="20" height="20">NestJS</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/mongodb.png" alt="" width="20" height="20">MongoDB</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/postgresql.png" alt="" width="20" height="20">PostgreSQL</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/typescript.png" alt="" width="20" height="20">TypeScript</span></li>
               </ul>
             </div>
           </li>
 
           <li class="tl" data-reveal>
             <div class="tl__aside">
-              <img class="tl__logo" src="images/icons/thefork_128.png" alt="" loading="eager">
+              <img class="tl__logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/logos/thefork.png" alt="" width="80" height="80">
               <div>
                 <p class="tl__org">TheFork</p>
                 <p class="tl__contract" data-i18n="xp.fork.contract">Permanent contract</p>
@@ -387,19 +390,19 @@
                 <li data-i18n="xp.fork.b2">Code coverage, optimization, bug fixing</li>
               </ul>
               <ul class="chips chips--tech">
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/typescript_128.png" alt="" loading="lazy">TypeScript</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/react_128.png" alt="" loading="lazy">React</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/nextjs_128.png" alt="" loading="lazy">Next.js</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/graphql_128.png" alt="" loading="lazy">GraphQL</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/playwright_128.png" alt="" loading="lazy">Playwright</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/chai_128.png" alt="" loading="lazy">Chai</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/typescript.png" alt="" width="20" height="20">TypeScript</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/react.png" alt="" width="20" height="20">React</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/nextjs.png" alt="" width="20" height="20">Next.js</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/graphql.png" alt="" width="20" height="20">GraphQL</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/playwright.png" alt="" width="20" height="20">Playwright</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/chai.png" alt="" width="20" height="20">Chai</span></li>
               </ul>
             </div>
           </li>
 
           <li class="tl" data-reveal>
             <div class="tl__aside">
-              <img class="tl__logo" src="images/icons/wiztivi_128.png" alt="" loading="eager">
+              <img class="tl__logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/logos/wiztivi.png" alt="" width="80" height="80">
               <div>
                 <p class="tl__org">Wiztivi</p>
                 <p class="tl__contract" data-i18n="xp.wiz.contract">Permanent contract</p>
@@ -419,17 +422,17 @@
                 <li data-i18n="xp.wiz.b5">Contribution to the internal framework development</li>
               </ul>
               <ul class="chips chips--tech">
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/javascript_128.png" alt="" loading="lazy">JavaScript</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/nodejs_128.png" alt="" loading="lazy">Node.js</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/cucumber_128.png" alt="" loading="lazy">Cucumber</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/chai_128.png" alt="" loading="lazy">Chai</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/javascript.png" alt="" width="20" height="20">JavaScript</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/nodejs.png" alt="" width="20" height="20">Node.js</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/cucumber.png" alt="" width="20" height="20">Cucumber</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/chai.png" alt="" width="20" height="20">Chai</span></li>
               </ul>
             </div>
           </li>
 
           <li class="tl" data-reveal>
             <div class="tl__aside">
-              <img class="tl__logo" src="images/icons/project_128.png" alt="" loading="eager">
+              <img class="tl__logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/logos/project.png" alt="" width="80" height="80">
               <div>
                 <p class="tl__org" data-i18n="xp.perso.org">Personal project</p>
                 <p class="tl__contract" data-i18n="xp.perso.contract">Entrepreneurship</p>
@@ -439,18 +442,18 @@
             <div class="tl__main">
               <p class="tl__lead" data-i18n="xp.perso.lead">Sports social network for tournament management</p>
               <ul class="chips chips--tech">
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/angular_128.png" alt="" loading="lazy">Angular</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/electron_128.png" alt="" loading="lazy">Electron</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/express_128.png" alt="" loading="lazy">Express</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/mongodb_128.png" alt="" loading="lazy">MongoDB</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/nodejs_128.png" alt="" loading="lazy">Node.js</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/angular.png" alt="" width="20" height="20">Angular</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/electron.png" alt="" width="20" height="20">Electron</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/express.png" alt="" width="20" height="20">Express</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/mongodb.png" alt="" width="20" height="20">MongoDB</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/nodejs.png" alt="" width="20" height="20">Node.js</span></li>
               </ul>
             </div>
           </li>
 
           <li class="tl" data-reveal>
             <div class="tl__aside">
-              <img class="tl__logo" src="images/icons/algo_data_128.png" alt="" loading="eager">
+              <img class="tl__logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/logos/algo_data.png" alt="" width="80" height="80">
               <div>
                 <p class="tl__org">Algo Data</p>
                 <p class="tl__contract" data-i18n="xp.algo.contract1">Fixed-term contract</p>
@@ -466,17 +469,17 @@
                 <li data-i18n="xp.algo.b2">IT support during congresses in Paris: JESFC, EuroPCR</li>
               </ul>
               <ul class="chips chips--tech">
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/java_128.png" alt="" loading="lazy">Java</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/webobjects_128.png" alt="" loading="lazy">WebObjects</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/postgresql_128.png" alt="" loading="lazy">PostgreSQL</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/bootstrap_128.png" alt="" loading="lazy">Bootstrap</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/java.png" alt="" width="20" height="20">Java</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/webobjects.png" alt="" width="20" height="20">WebObjects</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/postgresql.png" alt="" width="20" height="20">PostgreSQL</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/bootstrap.png" alt="" width="20" height="20">Bootstrap</span></li>
               </ul>
             </div>
           </li>
 
           <li class="tl" data-reveal>
             <div class="tl__aside">
-              <img class="tl__logo" src="images/icons/chu_nantes_128.png" alt="" loading="eager">
+              <img class="tl__logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/logos/chu_nantes.png" alt="" width="80" height="80">
               <div>
                 <p class="tl__org" data-i18n="xp.chu.org">Nantes University Hospital (DSIT)</p>
                 <p class="tl__contract" data-i18n="xp.chu.contract">Internship</p>
@@ -486,9 +489,9 @@
             <div class="tl__main">
               <p class="tl__lead" data-i18n="xp.chu.lead">New IT equipment database for Nantes University Hospital</p>
               <ul class="chips chips--tech">
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/php_128.png" alt="" loading="lazy">PHP</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/javascript_128.png" alt="" loading="lazy">JavaScript</span></li>
-                <li class="chip chip--sm"><span class="lift-surface"><img src="images/icons/mysql_128.png" alt="" loading="lazy">MySQL</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/php.png" alt="" width="20" height="20">PHP</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/javascript.png" alt="" width="20" height="20">JavaScript</span></li>
+                <li class="chip chip--sm"><span class="lift-surface"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/icons/sm/mysql.png" alt="" width="20" height="20">MySQL</span></li>
               </ul>
             </div>
           </li>
@@ -649,7 +652,7 @@
 
     </main>
 
-    <script defer src="js/i18n.js"></script>
-    <script defer src="js/main.js"></script>
+    <script defer src="js/i18n.js?v=20260912"></script>
+    <script defer src="js/main.js?v=20260912"></script>
   </body>
 </html>
