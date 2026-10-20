@@ -888,6 +888,8 @@ mark.hit.is-active {
 .tl__lead { font-weight: 600; color: var(--text); }
 .tl__lead--second { margin-top: 16px; }
 .tl__lead .hl { color: var(--accent-2); }
+/* The lead is semi-bold as a whole; a trailing note sits back at book weight. */
+.tl__lead .tl__note { font-weight: 400; }
 .tl__sub {
   font-size: .8rem;
   color: var(--text-mute);
