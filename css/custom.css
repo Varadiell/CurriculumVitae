@@ -1054,7 +1054,7 @@ mark.hit.is-active {
     -webkit-backdrop-filter: none;
     overflow: visible;
   }
-  .duo > #interests { padding-left: 36px; border-left: 1px solid var(--border); }
+  .duo > #interests { padding-left: 36px; }
   .duo .section-title { margin-bottom: 28px; font-size: clamp(1.4rem, 2.4vw, 1.8rem); }
   .duo .gradient-text {
     background-image: linear-gradient(110deg, var(--accent), var(--accent-2));
@@ -1065,7 +1065,6 @@ mark.hit.is-active {
   .duo .def { padding: 20px 0; border-radius: 0; }
   .duo .def:first-child { padding-top: 0; }
   .duo .def:last-child { padding-bottom: 0; }
-  .duo .def + .def { border-top: 1px solid var(--border); }
   .duo .def:hover { background: none; }
   .duo .defs dt {
     display: block;
@@ -1163,7 +1162,7 @@ mark.hit.is-active {
 }
 
 @media screen and (max-width: 900px) {
-  .duo > #interests { padding: 28px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+  .duo > #interests { padding: 28px 0 0; }
 }
 
 @media screen and (max-width: 520px) {
