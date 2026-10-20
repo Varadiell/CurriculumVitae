@@ -1089,9 +1089,18 @@ mark.hit.is-active {
     gap: 8px;
   }
   .language-name { color: var(--text); font-weight: 500; }
+  /* Same lift as .tag: the box keeps its place in the row and only the inner
+     surface moves, so the pointer never falls out of the element it lifted. */
   .language-rank {
     order: -1;
     flex: 0 0 52px;
+    display: inline-flex;
+    position: relative;
+  }
+  .language-rank > .lift-surface {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
     padding: 2px 6px;
     border: 1px solid var(--border-strong);
     border-radius: 6px;
@@ -1100,8 +1109,16 @@ mark.hit.is-active {
     font-size: .76rem;
     font-weight: 700;
     line-height: 1.5;
-    text-align: center;
     text-transform: capitalize;
+    transition: transform .28s var(--ease), color .28s var(--ease), border-color .28s var(--ease), box-shadow .28s var(--ease);
+  }
+  /* The rank is accent-coloured at rest, so it brightens the way other accent
+     text does on hover rather than falling back to the plain text colour. */
+  .language-rank:hover > .lift-surface {
+    transform: translateY(-2px);
+    color: var(--accent-2);
+    border-color: var(--border-strong);
+    box-shadow: var(--control-shadow-sm);
   }
   .language-note { color: var(--text-mute); font-size: .76rem; }
   .duo .bullets { margin-top: 0; gap: 8px; }
