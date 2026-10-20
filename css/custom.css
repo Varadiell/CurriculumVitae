@@ -525,7 +525,10 @@ mark.hit.is-active {
   grid-template-columns: auto 1fr;
   gap: clamp(20px, 4vw, 46px);
   align-items: center;
-  padding-bottom: clamp(38px, 5vw, 58px);
+  /* Room for the scroll arrow, which is absolutely positioned 14px from the
+     bottom and 34px tall. The old floor of 38px was under that, so once the
+     call-to-action wrapped onto two rows the arrow landed on top of it. */
+  padding-bottom: 58px;
 }
 
 .hero__portrait {
@@ -1217,7 +1220,8 @@ body.lang-swap .page { opacity: .35; }
   body { font-size: 15px; }
   .skills { columns: 1; }
   .page { padding-top: 76px; gap: 18px; }
-  .hero { grid-template-columns: 1fr; text-align: left; justify-items: start; }
+  /* The arrow is hidden below this width, so the hero can close up again. */
+  .hero { grid-template-columns: 1fr; text-align: left; justify-items: start; padding-bottom: 38px; }
   .hero__photo { width: 132px; }
   .toolbar { top: 12px; right: 12px; }
   .scroll-hint { display: none; }
