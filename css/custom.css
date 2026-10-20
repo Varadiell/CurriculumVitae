@@ -10,6 +10,12 @@
   --violet-deep: #4d16bd;
   --pink: #ff3f81;
   --gradient: linear-gradient(100deg, #4d16bd 0%, #7c3aed 42%, #ff3f81 100%);
+  /* Mirrored stops over a 200% wide tile: both edges land on the same violet,
+     and the slide shifts by exactly one tile, so the loop closes on the frame
+     it opened with. Kept flat on purpose -- an angle baked into the gradient
+     would leave a step where the tiles meet. The diagonal comes from rotating
+     the layer instead, which keeps the joint exact at any angle. */
+  --gradient-loop: linear-gradient(90deg, #4d16bd 0%, #7c3aed 21%, #ff3f81 50%, #7c3aed 79%, #4d16bd 100%);
   --control-shadow: 0 0 0 1px rgba(var(--net), .18), 0 12px 26px -10px rgba(109, 59, 255, .4);
   --control-shadow-sm: 0 0 0 1px rgba(var(--net), .18), 0 8px 18px -6px rgba(109, 59, 255, .4);
 
@@ -623,16 +629,70 @@ mark.hit.is-active {
   border-color: var(--border-strong);
   box-shadow: var(--control-shadow);
 }
+/* At rest this is the same flat control as the other buttons. The gradient
+   lives in a layer on top, so hovering crossfades it in instead of swapping a
+   background-image, which cannot transition. Border width stays 0 and the ring
+   is an inset shadow: with no border box, the layer covers the whole pill. */
 .btn--primary > .lift-surface {
+  position: relative;
+  overflow: hidden;
   border: 0;
   padding: 12px 19px;
-  background: var(--gradient);
-  color: #fff;
+  box-shadow: inset 0 0 0 1px var(--border-strong), 0 0 0 0 rgba(255, 63, 129, 0);
+  /* Shared by both layers so they sweep along one axis. 30deg off the flat
+     gradient reads as a 120deg ramp. */
+  --sweep-tilt: 30deg;
 }
-.btn--primary:hover > .lift-surface {
+.btn--primary > .lift-surface::before,
+.btn--primary > .lift-surface::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .45s var(--ease);
+}
+/* Declared at rest and merely paused, so leaving the button freezes the
+   gradient where it is instead of snapping it back to the first frame. */
+.btn--primary > .lift-surface::before {
+  /* Rotating leaves the corners of a flush layer bare, so it is oversized to
+     cover the pill at this tilt; the parent clips the overflow back to shape. */
+  inset: -180% -4%;
+  background: var(--gradient-loop) 0% 50% / 200% 100% repeat;
+  transform: rotate(var(--sweep-tilt));
+  animation: gradient-slide 8s linear infinite;
+  animation-play-state: paused;
+}
+/* A soft highlight drifts on its own, longer period. The two cycles never line
+   up, which turns the slide into a flow rather than a visible repeat. */
+.btn--primary > .lift-surface::after {
+  inset: -45% -12%;
+  background: radial-gradient(42% 120% at 28% 50%, rgba(255, 255, 255, .38), rgba(255, 255, 255, 0) 70%);
+  animation: gradient-sheen 7s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+/* The layers are positioned, so lift the label back above them. */
+.btn--primary > .lift-surface > * { position: relative; }
+/* Both shadow lists keep the same length and inset flags, otherwise the ring
+   would snap out instead of fading as the gradient arrives. */
+.btn--primary:hover > .lift-surface,
+.btn--primary:focus-visible > .lift-surface {
   color: #fff;
-  filter: saturate(1.12);
-  box-shadow: 0 14px 34px -16px rgba(255, 63, 129, .9);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0), 0 14px 34px -16px rgba(255, 63, 129, .9);
+}
+.btn--primary:hover > .lift-surface::before,
+.btn--primary:hover > .lift-surface::after,
+.btn--primary:focus-visible > .lift-surface::before,
+.btn--primary:focus-visible > .lift-surface::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+/* Shifting by one full tile ends on the frame it started from: seamless loop. */
+@keyframes gradient-slide { to { background-position: -200% 50%; } }
+/* Rotated first, then drifted along its own axis: same diagonal as the bands. */
+@keyframes gradient-sheen {
+  from { transform: rotate(var(--sweep-tilt)) translate3d(-16%, 0, 0) scale(1); }
+  to { transform: rotate(var(--sweep-tilt)) translate3d(16%, 0, 0) scale(1.14); }
 }
 
 .scroll-hint {
@@ -1227,6 +1287,7 @@ body.lang-swap .page { opacity: .35; }
   /* Normal document flow gives both PDF text extractors and humans the
      same reading order. No fixed heights or clipped page containers. */
   .lift-surface { display: contents !important; color: inherit !important; font: inherit !important; }
+  .lift-surface::before, .lift-surface::after { display: none !important; }
   .btn, .chip, .tag { vertical-align: baseline; }
   .tag { display: inline; }
   .page { display: block; width: auto; margin: 0; padding: 0; }
