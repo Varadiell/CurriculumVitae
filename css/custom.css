@@ -1156,6 +1156,11 @@ mark.hit.is-active {
   .duo .def { padding: 18px 0; }
 }
 
+/* The shortcut badge is painted from the attribute rather than held as text:
+   axe counts a control's inner text when it checks that the accessible name
+   contains the visible label, and a stray "L" there is not part of the label. */
+kbd[data-key]::before { content: attr(data-key); }
+
 kbd {
   display: inline-grid;
   place-items: center;

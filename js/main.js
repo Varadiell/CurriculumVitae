@@ -42,6 +42,11 @@
     root.lang = lang;
     // the button shows the language currently in use
     if (langLabel) { langLabel.textContent = lang.toUpperCase(); }
+    // Voice control works by reading a control's name aloud, so the name has
+    // to start with the code on the button, not only state its purpose.
+    if (langBtn && dict['nav.langSwitch']) {
+      langBtn.setAttribute('aria-label', lang.toUpperCase() + ' \u2014 ' + dict['nav.langSwitch']);
+    }
   }
 
   function setLang(lang, animate) {
